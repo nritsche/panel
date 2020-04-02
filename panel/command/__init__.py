@@ -20,10 +20,11 @@ def transform_cmds(argv):
     Allows usage with anaconda-project by remapping the argv list provided
     into arguments accepted by Bokeh 0.12.7 or later.
     """
-    replacements = {'--anaconda-project-host':'--allow-websocket-origin',
-                    '--anaconda-project-port': '--port',
-                    '--anaconda-project-address': '--address'
-                     }
+    replacements = {
+        '--anaconda-project-host':'--allow-websocket-origin',
+        '--anaconda-project-port': '--port',
+        '--anaconda-project-address': '--address'
+    }
     transformed = []
     skip = False
     for arg in argv:
