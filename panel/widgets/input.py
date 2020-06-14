@@ -37,16 +37,21 @@ class NumericInput(Widget):
 
     placeholder = param.Number(default=None)
 
-    start = param.Number(default=None, allow_None=True)
+    type = param.ObjectSelector(default=float, objects=[float, int])
 
-    end = param.Number(default=None, allow_None=True)
+    start = param.Number(default=None, allow_None=True, doc="""
+        Optional minimum allowable value.""")
 
-    _widget_type = _BkTextInput
+    end = param.Number(default=None, allow_None=True, doc="""
+        Optional maximum allowable value.""")
 
     formatter = param.Parameter(default=None)
 
-    _rename = {'formatter': None, 'start': None, 'end': None}
+    _widget_type = _BkTextInput
 
+    _rename = {'name': 'title', 'type': None, 'formatter': None, 
+               'start': None, 'end': None, 
+               'value': None, 'placeholder': None}
     
     def _bound_value(self, value):
         if self.start is not None:
@@ -63,33 +68,30 @@ class NumericInput(Widget):
         return value
 
     def _process_param_change(self, msg):
-        msg.pop('formatter', None)
-        
-        if 'start' in msg:
-            start = msg.pop('start')
-            self.param.value.bounds[0] = start
-        if 'end' in msg:
-            end = msg.pop('end')
-            self.param.value.bounds[1] = end
-
-        if 'value' in msg and msg['value'] is not None:
-            msg['value'] = self._format_value(self.value)
-        if 'placeholder' in msg and msg['placeholder'] is not None:
-            msg['placeholder'] = self._format_value(self.placeholder)
+        [msg.pop(param_name, None) for param_name in ['type', 'formatter']]
+        self.param.value.bounds[0] = msg.pop('start', None)
+        self.param.value.bounds[1] = msg.pop('end', None)
+        for param_name in ['value', 'placeholder']:
+            if param_name in msg and msg[param_name] is not None:
+                param_value = self.type(getattr(self, param_name))
+                if param_value != getattr(self, param_name):
+                    setattr(self, param_name, param_value)
+                    return
+                else:
+                    msg[param_name] = self._format_value(param_value)
         return msg
 
     def _process_property_change(self, msg):
         if 'value' in msg and msg['value'] is not None:
             try:
-                value = float(msg['value'])
+                value = self.type(float(msg['value']))
                 msg['value'] = self._bound_value(value)
-                if msg['value'] != value:
-                    self.param.trigger('value')
+                self.param.trigger('value')
             except ValueError:
                 msg.pop('value')
         if 'placeholder' in msg and msg['placeholder'] is not None:
             try:
-                msg['placeholder'] = self._format_value(float(msg['placeholder']))
+                msg['placeholder'] = self._format_value(self.type(msg['placeholder']))
             except ValueError:
                 msg.pop('placeholder')
         return msg
