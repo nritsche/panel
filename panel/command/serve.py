@@ -10,8 +10,33 @@ from tornado.wsgi import WSGIContainer
 from tornado.web import FallbackHandler
 
 from ..io.rest import ParamHandler, build_tranquilize_application
-from ..io.server import INDEX_HTML
+from ..io.server import INDEX_HTML, get_static_routes
 from ..util import bokeh_version
+
+
+def parse_var(s):
+    """
+    Parse a key, value pair, separated by '='
+    That's the reverse of ShellArgs.
+
+    On the command line (argparse) a declaration will typically look like:
+        foo=hello
+    or
+        foo="hello world"
+    """
+    items = s.split('=')
+    key = items[0].strip() # we remove blanks around keys, as is logical
+    if len(items) > 1:
+        # rejoin the rest:
+        value = '='.join(items[1:])
+    return (key, value)
+
+
+def parse_vars(items):
+    """
+    Parse a series of key-value pairs and return a dictionary
+    """
+    return dict((parse_var(item) for item in items))
 
 
 class Serve(_BkServe):
@@ -27,10 +52,15 @@ class Serve(_BkServe):
             type    = str,
             help    = "Endpoint to store REST API on.",
             default = 'rest'
-        ))
+        )),
+        ('--static-dirs', dict(
+            metavar="KEY=VALUE",
+            nargs='+',
+            help=("Static directories to serve specified as key=value "
+                  "pairs mapping from URL route to static file directory.")
+        )),
     )
-    
-    
+
     def customize_kwargs(self, args, server_kwargs):
         '''Allows subclasses to customize ``server_kwargs``.
 
@@ -57,9 +87,12 @@ class Serve(_BkServe):
             patterns.append((r"^.*", ParamHandler))
         elif args.rest_provider is not None:
             raise ValueError("rest-provider %r not recognized." % args.rest_provider)
+
+        # Handle tranquilized functions in the supplied functions
+        kwargs['extra_patterns'] = patterns = []
+
+        if args.static_dirs:
+            patterns += get_static_routes(parse_vars(args.static_dirs))
+
         return kwargs
 
-    def invoke(self, args):
-        if bokeh_version < '2.0.1' and args.rest_provider:
-            raise ValueError("Serving REST endpoints requires Bokeh>=2.0.1.")
-        super(Serve, self).invoke(args)
