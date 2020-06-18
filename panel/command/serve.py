@@ -9,7 +9,7 @@ from bokeh.command.subcommands.serve import Serve as _BkServe
 from tornado.wsgi import WSGIContainer
 from tornado.web import FallbackHandler
 
-from ..io.rest import ParamHandler, build_tranquilize_application
+from ..io.rest import REST_PROVIDERS, ParamHandler, build_tranquilize_application
 from ..io.server import INDEX_HTML, get_static_routes
 from ..util import bokeh_version
 
@@ -79,17 +79,11 @@ class Serve(_BkServe):
 
         # Handle tranquilized functions in the supplied functions
         kwargs['extra_patterns'] = patterns = []
-        if args.rest_provider == 'tranquilizer':
-            app = build_tranquilize_application(files, args)
-            tr = WSGIContainer(app)
-            patterns.append((r"^/%s/.*" % args.rest_endpoint, FallbackHandler, dict(fallback=tr)))
-        elif args.rest_provider == 'param':
-            patterns.append((r"^.*", ParamHandler))
+        if args.rest_provider in REST_PROVIDERS:
+            pattern = REST_PROVIDERS[args.rest_provider](files, args.rest_endpoint)
+            patterns.extend(pattern)
         elif args.rest_provider is not None:
             raise ValueError("rest-provider %r not recognized." % args.rest_provider)
-
-        # Handle tranquilized functions in the supplied functions
-        kwargs['extra_patterns'] = patterns = []
 
         if args.static_dirs:
             patterns += get_static_routes(parse_vars(args.static_dirs))
