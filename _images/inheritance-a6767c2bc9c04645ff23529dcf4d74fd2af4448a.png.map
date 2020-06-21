@@ -1,0 +1,9 @@
+<map id="inheritanced684b55be2" name="inheritanced684b55be2">
+<area shape="rect" id="node1" href="panel.pane.html#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="793,23,942,43"/>
+<area shape="rect" id="node3" href="#panel.pane.vtk.vtk.VTK" target="_top" title="VTK panes allow rendering VTK objects." alt="" coords="997,4,1130,23"/>
+<area shape="rect" id="node4" href="#panel.pane.vtk.vtk.VTKVolume" target="_top" title="panel.pane.vtk.vtk.VTKVolume" alt="" coords="979,42,1148,61"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="619,23,757,43"/>
+<area shape="rect" id="node5" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="247,4,397,23"/>
+<area shape="rect" id="node7" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="441,23,582,43"/>
+<area shape="rect" id="node6" title="params(name=String)" alt="" coords="4,4,203,23"/>
+</map>

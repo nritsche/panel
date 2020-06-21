@@ -1,0 +1,8 @@
+<map id="inheritance548a500a04" name="inheritance548a500a04">
+<area shape="rect" id="node1" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="785,23,933,42"/>
+<area shape="rect" id="node3" href="#panel.pane.holoviews.HoloViews" target="_top" title="HoloViews panes render any HoloViews object to a corresponding" alt="" coords="969,23,1148,42"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="613,23,749,42"/>
+<area shape="rect" id="node4" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="245,4,393,23"/>
+<area shape="rect" id="node6" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="437,23,577,42"/>
+<area shape="rect" id="node5" title="params(name=String)" alt="" coords="4,4,201,23"/>
+</map>

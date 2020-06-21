@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>panel.pane.vtk.vtk — Panel 0.9.6 documentation</title>
+<meta content="High-level dashboarding for python visualization libraries" name="description"/>
+<meta content="Panel contributors" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../../_static/js/main.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="https://panel.holoviz.org/_modules/panel/pane/vtk/vtk.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../../index.html">
+<img alt="Logo" src="../../../../_static/logo_horizontal.png"/>
+</a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+<li class="nav-link doc-head"><a href="//discourse.holoviz.org">Discourse</a></li>
+<li class="nav-link doc-head"><a href="//twitter.com/Panel_org">Twitter</a></li>
+<li class="nav-link doc-head"><a href="//github.com/pyviz/panel">Github</a></li>
+<li class="nav-link">
+<div style="display:inline-block;vertical-align: middle;">
+<div class="search-bar">
+<form action="../../../../search.html" method="get" role="search">
+<input name="q" placeholder="Search" type="search"/>
+<button type="submit">
+<img alt="Search Icon" src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png"/>
+</button>
+</form>
+</div>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="second-nav">
+<nav>
+<ul class="navigation-menu show">
+<li class="nav-link doc-head"><a href="../../../../getting_started/index.html">Getting started</a></li>
+<li class="nav-link doc-head"><a href="../../../../user_guide/index.html">User Guide</a></li>
+<li class="nav-link doc-head"><a href="../../../../gallery/index.html">Gallery</a></li>
+<li class="nav-link doc-head"><a href="../../../../reference/index.html">Reference Gallery</a></li>
+<li class="nav-link doc-head"><a href="../../../../developer_guide/index.html">Developer Guide</a></li>
+<li class="nav-link doc-head"><a href="../../../../releases.html">Releases</a></li>
+<li class="nav-link doc-head"><a href="../../../../api/index.html">API</a></li>
+<li class="nav-link doc-head"><a href="../../../../FAQ.html">FAQ</a></li>
+<li class="nav-link doc-head"><a href="../../../../about.html">About</a></li>
+</ul>
+</nav>
+</div>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gallery/index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference/index.html">Reference Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Comparisons.html">Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Roadmap.html">Road Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/pyviz/panel">Github source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for panel.pane.vtk.vtk</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="sd">"""</span>
+<span class="sd">Defines a VTKPane which renders a vtk plot using VTKPlot bokeh model.</span>
+<span class="sd">"""</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> <span class="c1"># python 2</span>
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">urlopen</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">string_types</span>
+
+<span class="kn">import</span> <span class="nn">param</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">pyviz_comms</span> <span class="kn">import</span> <span class="n">JupyterComm</span>
+
+<span class="kn">from</span> <span class="nn">.enums</span> <span class="kn">import</span> <span class="n">PRESET_CMAPS</span>
+<span class="kn">from</span> <span class="nn">..base</span> <span class="kn">import</span> <span class="n">PaneBase</span>
+<span class="kn">from</span> <span class="nn">...util</span> <span class="kn">import</span> <span class="n">isfile</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="n">base64encode</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">base64encode</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'base64'</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="VTKVolume"><a class="viewcode-back" href="../../../../api/panel.pane.vtk.html#panel.pane.vtk.vtk.VTKVolume">[docs]</a><span class="k">class</span> <span class="nc">VTKVolume</span><span class="p">(</span><span class="n">PaneBase</span><span class="p">):</span>
+
+    <span class="n">ambient</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Value to control the ambient lighting. It is the light an</span>
+<span class="s2">        object gives even in the absence of strong light. It is</span>
+<span class="s2">        constant in all directions."""</span><span class="p">)</span>
+
+    <span class="n">camera</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="s2">"State of the rendered VTK camera."</span><span class="p">)</span>
+
+    <span class="n">colormap</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'erdc_rainbow_bright'</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="n">PRESET_CMAPS</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Name of the colormap used to transform pixel value in color."""</span><span class="p">)</span>
+
+    <span class="n">diffuse</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Value to control the diffuse Lighting. It relies on both the </span>
+<span class="s2">        light direction and the object surface normal."""</span><span class="p">)</span>
+
+    <span class="n">display_volume</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        If set to True, the 3D respresentation of the volume is</span>
+<span class="s2">        displayed using ray casting."""</span><span class="p">)</span>
+
+    <span class="n">display_slices</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        If set to true, the orthgonal slices in the three (X, Y, Z)</span>
+<span class="s2">        directions are displayed. Position of each slice can be </span>
+<span class="s2">        controlled using slice_(i,j,k) parameters."""</span><span class="p">)</span>
+
+    <span class="n">edge_gradient</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Parameter to adjust the opacity of the volume based on the </span>
+<span class="s2">        gradient between voxels."""</span><span class="p">)</span>
+
+    <span class="n">interpolation</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'fast_linear'</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s1">'fast_linear'</span><span class="p">,</span><span class="s1">'linear'</span><span class="p">,</span><span class="s1">'nearest'</span><span class="p">],</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        interpolation type for sampling a volume. `nearest`</span>
+<span class="s2">        interpolation will snap to the closest voxel, `linear` will</span>
+<span class="s2">        perform trilinear interpolation to compute a scalar value from</span>
+<span class="s2">        surrounding voxels.  `fast_linear` under WebGL 1 will perform</span>
+<span class="s2">        bilinear interpolation on X and Y but use nearest for Z. This</span>
+<span class="s2">        is slightly faster than full linear at the cost of no Z axis</span>
+<span class="s2">        linear interpolation."""</span><span class="p">)</span>
+
+    <span class="n">mapper</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="s2">"Lookup Table in format {low, high, palette}"</span><span class="p">)</span>
+
+    <span class="n">max_data_size</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Maximum data size transfert allowed without subsampling"""</span><span class="p">)</span>
+
+    <span class="n">orientation_widget</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Activate/Deactivate the orientation widget display."""</span><span class="p">)</span>
+
+    <span class="n">origin</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Tuple</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">allow_None</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">render_background</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'#52576e'</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Allows to specify the background color of the 3D rendering.</span>
+<span class="s2">        The value must be specified as an hexadecimal color string."""</span><span class="p">)</span>
+
+    <span class="n">rescale</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        If set to True the colormap is rescaled beween min and max </span>
+<span class="s2">        value of the non-transparent pixel, otherwise  the full range</span>
+<span class="s2">        of the pixel values are used."""</span><span class="p">)</span>
+
+    <span class="n">shadow</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        If set to False, then the mapper for the volume will not </span>
+<span class="s2">        perform shading computations, it is the same as setting </span>
+<span class="s2">        ambient=1, diffuse=0, specular=0."""</span><span class="p">)</span>
+
+    <span class="n">sampling</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Parameter to adjust the distance between samples used for </span>
+<span class="s2">        rendering. The lower the value is the more precise is the </span>
+<span class="s2">        representation but it is more computationally intensive."""</span><span class="p">)</span>
+
+    <span class="n">spacing</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Tuple</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Distance between voxel in each direction"""</span><span class="p">)</span>
+
+    <span class="n">specular</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Value to control specular lighting. It is the light reflects</span>
+<span class="s2">        back toward the camera when hitting the object."""</span><span class="p">)</span>
+
+    <span class="n">specular_power</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Specular power refers to how much light is reflected in a</span>
+<span class="s2">        mirror like fashion, rather than scattered randomly in a</span>
+<span class="s2">        diffuse manner."""</span><span class="p">)</span>
+
+    <span class="n">slice_i</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">per_instance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Integer parameter to control the position of the slice normal</span>
+<span class="s2">        to the X direction."""</span><span class="p">)</span>
+
+    <span class="n">slice_j</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">per_instance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Integer parameter to control the position of the slice normal</span>
+<span class="s2">        to the Y direction."""</span><span class="p">)</span>
+
+    <span class="n">slice_k</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">per_instance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Integer parameter to control the position of the slice normal</span>
+<span class="s2">        to the Z direction."""</span><span class="p">)</span>
+
+    <span class="n">_serializers</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">_rename</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'max_data_size'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">'spacing'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">'origin'</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+
+    <span class="n">_updates</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VTKVolume</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub_spacing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
+
+<div class="viewcode-block" id="VTKVolume.applies"><a class="viewcode-back" href="../../../../api/panel.pane.vtk.html#panel.pane.vtk.vtk.VTKVolume.applies">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">applies</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">((</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">or</span>
+            <span class="nb">any</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_serializers</span><span class="o">.</span><span class="n">keys</span><span class="p">()])):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="s1">'vtk'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">vtk</span>
+            <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkImageData</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comm</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Should return the bokeh model to be rendered.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="s1">'panel.models.vtk'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">comm</span><span class="p">,</span> <span class="n">JupyterComm</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'VTKVolumePlot was not imported on instantiation '</span>
+                                   <span class="s1">'and may not render in a notebook. Restart '</span>
+                                   <span class="s1">'the notebook kernel and ensure you load '</span>
+                                   <span class="s1">'it as part of the extension using:'</span>
+                                   <span class="s1">'</span><span class="se">\n\n</span><span class="s1">pn.extension(</span><span class="se">\'</span><span class="s1">vtk</span><span class="se">\'</span><span class="s1">)</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">...models.vtk</span> <span class="kn">import</span> <span class="n">VTKVolumePlot</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">VTKVolumePlot</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'panel.models.vtk'</span><span class="p">],</span> <span class="s1">'VTKVolumePlot'</span><span class="p">)</span>
+
+        <span class="n">props</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_param_change</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_init_properties</span><span class="p">())</span>
+        <span class="n">volume_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_volume_data</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">VTKVolumePlot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">volume_data</span><span class="p">,</span>
+                              <span class="o">**</span><span class="n">props</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_link_props</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">[</span><span class="s1">'colormap'</span><span class="p">,</span> <span class="s1">'orientation_widget'</span><span class="p">,</span> <span class="s1">'camera'</span><span class="p">,</span> <span class="s1">'mapper'</span><span class="p">],</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">root</span><span class="o">.</span><span class="n">ref</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">_update_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">comm</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VTKVolume</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_update_object</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_init_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">get_param_values</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+                    <span class="s1">'default_layout'</span><span class="p">,</span> <span class="s1">'object'</span><span class="p">,</span> <span class="s1">'max_data_size'</span><span class="p">,</span> <span class="s1">'spacing'</span><span class="p">,</span> <span class="s1">'origin'</span>
+                <span class="p">]}</span>
+
+    <span class="k">def</span> <span class="nf">_get_object_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">GetDimensions</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_process_param_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">VTKVolume</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_process_param_change</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">slice_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'slice_i'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'slice_j'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'slice_k'</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">sub_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subsample_dimensions</span>
+                <span class="n">ori_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">slice_params</span><span class="p">:</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="n">slice_params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                    <span class="n">msg</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v</span> <span class="o">*</span> <span class="n">sub_dim</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">/</span> <span class="n">ori_dim</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">msg</span>
+
+    <span class="k">def</span> <span class="nf">_process_property_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">VTKVolume</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_process_property_change</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">slice_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'slice_i'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'slice_j'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'slice_k'</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">sub_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subsample_dimensions</span>
+                <span class="n">ori_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">slice_params</span><span class="p">:</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="n">slice_params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                    <span class="n">msg</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v</span> <span class="o">*</span> <span class="n">ori_dim</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">/</span> <span class="n">sub_dim</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">msg</span>
+
+    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_volume_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_volume_data</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_volume_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_object_dimensions</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subsample_dimensions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_volume_data</span><span class="p">[</span><span class="s1">'dims'</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">slice_i</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slice_i</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">slice_j</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slice_j</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">slice_k</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slice_k</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_orginal_dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_volume_data</span>
+
+<div class="viewcode-block" id="VTKVolume.register_serializer"><a class="viewcode-back" href="../../../../api/panel.pane.vtk.html#panel.pane.vtk.vtk.VTKVolume.register_serializer">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">register_serializer</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">class_type</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Register a seriliazer for a given type of class.</span>
+<span class="sd">        A serializer is a function which take an instance of `class_type`</span>
+<span class="sd">        (like a vtk.vtkImageData) as input and return a numpy array of the data</span>
+<span class="sd">        """</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_serializers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">class_type</span><span class="p">:</span><span class="n">serializer</span><span class="p">})</span></div>
+
+    <span class="k">def</span> <span class="nf">_volume_from_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_array</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">buffer</span><span class="o">=</span><span class="n">base64encode</span><span class="p">(</span><span class="n">sub_array</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">'F'</span> <span class="k">if</span> <span class="n">sub_array</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s1">'F_CONTIGUOUS'</span><span class="p">]</span> <span class="k">else</span> <span class="s1">'C'</span><span class="p">)),</span>
+                    <span class="n">dims</span><span class="o">=</span><span class="n">sub_array</span><span class="o">.</span><span class="n">shape</span> <span class="k">if</span> <span class="n">sub_array</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s1">'F_CONTIGUOUS'</span><span class="p">]</span> <span class="k">else</span> <span class="n">sub_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">spacing</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sub_spacing</span> <span class="k">if</span> <span class="n">sub_array</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s1">'F_CONTIGUOUS'</span><span class="p">]</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sub_spacing</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">origin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">,</span>
+                    <span class="n">data_range</span><span class="o">=</span><span class="p">(</span><span class="n">sub_array</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">sub_array</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+                    <span class="n">dtype</span><span class="o">=</span><span class="n">sub_array</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_volume_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_volume_from_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subsample_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">available_serializer</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">VTKVolume</span><span class="o">.</span><span class="n">_serializers</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">available_serializer</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">vtk</span>
+                <span class="kn">from</span> <span class="nn">vtk.util</span> <span class="kn">import</span> <span class="n">numpy_support</span>
+
+                <span class="k">def</span> <span class="nf">volume_serializer</span><span class="p">(</span><span class="n">inst</span><span class="p">):</span>
+                    <span class="n">imageData</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">object</span>
+                    <span class="n">array</span> <span class="o">=</span> <span class="n">numpy_support</span><span class="o">.</span><span class="n">vtk_to_numpy</span><span class="p">(</span><span class="n">imageData</span><span class="o">.</span><span class="n">GetPointData</span><span class="p">()</span><span class="o">.</span><span class="n">GetScalars</span><span class="p">())</span>
+                    <span class="n">dims</span> <span class="o">=</span> <span class="n">imageData</span><span class="o">.</span><span class="n">GetDimensions</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">inst</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="n">imageData</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">inst</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">imageData</span><span class="o">.</span><span class="n">GetOrigin</span><span class="p">()</span>
+                    <span class="k">return</span> <span class="n">inst</span><span class="o">.</span><span class="n">_volume_from_array</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">_subsample_array</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">'C'</span><span class="p">)))</span>
+
+                <span class="n">VTKVolume</span><span class="o">.</span><span class="n">register_serializer</span><span class="p">(</span><span class="n">vtk</span><span class="o">.</span><span class="n">vtkImageData</span><span class="p">,</span> <span class="n">volume_serializer</span><span class="p">)</span>
+                <span class="n">serializer</span> <span class="o">=</span> <span class="n">volume_serializer</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">serializer</span> <span class="o">=</span> <span class="n">available_serializer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">serializer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_subsample_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span>
+        <span class="n">original_shape</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">spacing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span>
+        <span class="n">extent</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">((</span><span class="n">o_s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">s</span> <span class="k">for</span> <span class="n">o_s</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">original_shape</span><span class="p">,</span> <span class="n">spacing</span><span class="p">))</span>
+        <span class="n">dim_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">original_shape</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_data_size</span><span class="p">)</span>
+        <span class="n">max_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">o_s</span> <span class="o">/</span> <span class="n">dim_ratio</span><span class="p">)</span> <span class="k">for</span> <span class="n">o_s</span> <span class="ow">in</span> <span class="n">original_shape</span><span class="p">)</span>
+        <span class="n">dowsnscale_factor</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">o_s</span><span class="p">,</span> <span class="n">m_s</span><span class="p">)</span> <span class="o">/</span> <span class="n">m_s</span> <span class="k">for</span> <span class="n">m_s</span><span class="p">,</span> <span class="n">o_s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">max_shape</span><span class="p">,</span> <span class="n">original_shape</span><span class="p">)]</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">d_f</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">d_f</span> <span class="ow">in</span> <span class="n">dowsnscale_factor</span><span class="p">]):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">nd</span>
+                <span class="n">sub_array</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">interpolation</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">d_f</span> <span class="k">for</span> <span class="n">d_f</span> <span class="ow">in</span> <span class="n">dowsnscale_factor</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="n">sub_array</span> <span class="o">=</span> <span class="n">array</span><span class="p">[::</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">dowsnscale_factor</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span>
+                                  <span class="p">::</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">dowsnscale_factor</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span>
+                                  <span class="p">::</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">dowsnscale_factor</span><span class="p">[</span><span class="mi">2</span><span class="p">]))]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sub_spacing</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">e</span> <span class="o">/</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">sub_array</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sub_array</span> <span class="o">=</span> <span class="n">array</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sub_spacing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span>
+        <span class="k">return</span> <span class="n">sub_array</span></div>
+
+
+<div class="viewcode-block" id="VTK"><a class="viewcode-back" href="../../../../api/panel.pane.vtk.html#panel.pane.vtk.vtk.VTK">[docs]</a><span class="k">class</span> <span class="nc">VTK</span><span class="p">(</span><span class="n">PaneBase</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    VTK panes allow rendering VTK objects.</span>
+<span class="sd">    """</span>
+
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Parameters of the axes to construct in the 3d view.</span>
+
+<span class="s2">        Must contain at least ``xticker``, ``yticker`` and ``zticker``.</span>
+
+<span class="s2">        A ``ticker`` is a dictionary which contains:</span>
+<span class="s2">          - ``ticks`` (array of numbers) - required.</span>
+<span class="s2">              Positions in the scene coordinates of the corresponding</span>
+<span class="s2">              axis' ticks.</span>
+<span class="s2">          - ``labels`` (array of strings) - optional.</span>
+<span class="s2">              Label displayed respectively to the `ticks` positions.</span>
+<span class="s2">              If `labels` are not defined they are infered from the</span>
+<span class="s2">              `ticks` array.</span>
+<span class="s2">          - ``digits``: number of decimal digits when `ticks` are converted to `labels`.</span>
+<span class="s2">          - ``fontsize``: size in pts of the ticks labels.</span>
+<span class="s2">          - ``show_grid``: boolean.</span>
+<span class="s2">                If true (default) the axes grid is visible.</span>
+<span class="s2">          - ``grid_opacity``: float between 0-1.</span>
+<span class="s2">                Defines the grid opacity.</span>
+<span class="s2">          - ``axes_opacity``: float between 0-1.</span>
+<span class="s2">                Defines the axes lines opacity.</span>
+<span class="s2">    """</span><span class="p">)</span>
+
+    <span class="n">camera</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="s2">"State of the rendered VTK camera."</span><span class="p">)</span>
+
+    <span class="n">enable_keybindings</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Activate/Deactivate keys binding.</span>
+
+<span class="s2">        Warning: These keybindings may not work as expected in a</span>
+<span class="s2">                 notebook context if they interact with already</span>
+<span class="s2">                 bound keys."""</span><span class="p">)</span>
+
+    <span class="n">orientation_widget</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Activate/Deactivate the orientation widget display."""</span><span class="p">)</span>
+
+    <span class="n">serialize_on_instantiation</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Define if the object serialization occurs at panel instantiation</span>
+<span class="s2">        or when the panel is displayed."""</span><span class="p">)</span>
+
+    <span class="n">_updates</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">_rerender_params</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'object'</span><span class="p">,</span> <span class="s1">'serialize_on_instantiation'</span><span class="p">]</span>
+
+    <span class="n">_serializers</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VTK</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vtkjs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize_on_instantiation</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vtkjs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_vtkjs</span><span class="p">()</span>
+
+<div class="viewcode-block" id="VTK.applies"><a class="viewcode-back" href="../../../../api/panel.pane.vtk.html#panel.pane.vtk.vtk.VTK.applies">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">applies</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">string_types</span><span class="p">)</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.vtkjs'</span><span class="p">)</span> <span class="ow">or</span>
+            <span class="nb">any</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_serializers</span><span class="o">.</span><span class="n">keys</span><span class="p">()])):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="s1">'vtk'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">vtk</span>
+            <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindow</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comm</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Should return the bokeh model to be rendered.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="s1">'panel.models.vtk'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">comm</span><span class="p">,</span> <span class="n">JupyterComm</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'VTKPlot was not imported on instantiation '</span>
+                                   <span class="s1">'and may not render in a notebook. Restart '</span>
+                                   <span class="s1">'the notebook kernel and ensure you load '</span>
+                                   <span class="s1">'it as part of the extension using:'</span>
+                                   <span class="s1">'</span><span class="se">\n\n</span><span class="s1">pn.extension(</span><span class="se">\'</span><span class="s1">vtk</span><span class="se">\'</span><span class="s1">)</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">...models.vtk</span> <span class="kn">import</span> <span class="n">VTKPlot</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">VTKPlot</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'panel.models.vtk'</span><span class="p">],</span> <span class="s1">'VTKPlot'</span><span class="p">)</span>
+
+        <span class="n">vtkjs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_vtkjs</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">base64encode</span><span class="p">(</span><span class="n">vtkjs</span><span class="p">)</span> <span class="k">if</span> <span class="n">vtkjs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">vtkjs</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_param_change</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_init_properties</span><span class="p">())</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">VTKPlot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_link_props</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">[</span><span class="s1">'camera'</span><span class="p">,</span> <span class="s1">'enable_keybindings'</span><span class="p">,</span> <span class="s1">'orientation_widget'</span><span class="p">],</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">root</span><span class="o">.</span><span class="n">ref</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">_update_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">comm</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VTK</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_update_object</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">construct_colorbars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">'horizontal'</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">.vtkjs_serializer</span> <span class="kn">import</span> <span class="n">construct_palettes</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span> <span class="o">=</span> <span class="n">construct_palettes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">Plot</span><span class="p">,</span> <span class="n">LinearColorMapper</span><span class="p">,</span> <span class="n">ColorBar</span><span class="p">,</span> <span class="n">FixedTicker</span>
+            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">'horizontal'</span><span class="p">:</span>
+                <span class="n">cbs</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_legend</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s1">'low'</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="s1">'high'</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+                    <span class="n">cbs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ColorBar</span><span class="p">(</span>
+                        <span class="n">color_mapper</span><span class="o">=</span><span class="n">LinearColorMapper</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">v</span><span class="p">[</span><span class="s1">'low'</span><span class="p">],</span> <span class="n">high</span><span class="o">=</span><span class="n">v</span><span class="p">[</span><span class="s1">'high'</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="n">v</span><span class="p">[</span><span class="s1">'palette'</span><span class="p">]),</span>
+                        <span class="n">title</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+                        <span class="n">ticker</span><span class="o">=</span><span class="n">FixedTicker</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">ticks</span><span class="p">),</span>
+                        <span class="n">label_standoff</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">background_fill_alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">'horizontal'</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="p">))</span>
+                <span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">toolbar_location</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frame_height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_width'</span><span class="p">,</span>
+                            <span class="n">outline_line_width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="p">[</span><span class="n">plot</span><span class="o">.</span><span class="n">add_layout</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="s1">'below'</span><span class="p">)</span> <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="n">cbs</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">plot</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'orientation can only be horizontal'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_init_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">get_param_values</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'default_layout'</span><span class="p">,</span> <span class="s1">'object'</span><span class="p">,</span> <span class="s1">'infer_legend'</span><span class="p">,</span>
+                <span class="s1">'serialize_on_instantiation'</span><span class="p">]}</span>
+
+    <span class="k">def</span> <span class="nf">_process_param_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">VTK</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_process_param_change</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">'axes'</span> <span class="ow">in</span> <span class="n">msg</span> <span class="ow">and</span> <span class="n">msg</span><span class="p">[</span><span class="s1">'axes'</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">VTKAxes</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'panel.models.vtk'</span><span class="p">],</span> <span class="s1">'VTKAxes'</span><span class="p">)</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="s1">'axes'</span><span class="p">]</span>
+            <span class="n">msg</span><span class="p">[</span><span class="s1">'axes'</span><span class="p">]</span> <span class="o">=</span> <span class="n">VTKAxes</span><span class="p">(</span><span class="o">**</span><span class="n">axes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">msg</span>
+
+<div class="viewcode-block" id="VTK.register_serializer"><a class="viewcode-back" href="../../../../api/panel.pane.vtk.html#panel.pane.vtk.vtk.VTK.register_serializer">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">register_serializer</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">class_type</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Register a seriliazer for a given type of class.</span>
+<span class="sd">        A serializer is a function which take an instance of `class_type`</span>
+<span class="sd">        (like a vtk.vtkRenderWindow) as input and return the binary zip</span>
+<span class="sd">        stream of the corresponding `vtkjs` file</span>
+<span class="sd">        """</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_serializers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">class_type</span><span class="p">:</span><span class="n">serializer</span><span class="p">})</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_vtkjs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vtkjs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">string_types</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.vtkjs'</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">):</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">vtkjs</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">data_url</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+                    <span class="n">vtkjs</span> <span class="o">=</span> <span class="n">data_url</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="s1">'read'</span><span class="p">):</span>
+                <span class="n">vtkjs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">available_serializer</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">VTK</span><span class="o">.</span><span class="n">_serializers</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">available_serializer</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="kn">import</span> <span class="nn">vtk</span>
+                    <span class="kn">from</span> <span class="nn">.vtkjs_serializer</span> <span class="kn">import</span> <span class="n">render_window_serializer</span>
+
+                    <span class="n">VTK</span><span class="o">.</span><span class="n">register_serializer</span><span class="p">(</span><span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindow</span><span class="p">,</span> <span class="n">render_window_serializer</span><span class="p">)</span>
+                    <span class="n">serializer</span> <span class="o">=</span> <span class="n">render_window_serializer</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">serializer</span> <span class="o">=</span> <span class="n">available_serializer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">vtkjs</span> <span class="o">=</span> <span class="n">serializer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vtkjs</span> <span class="o">=</span> <span class="n">vtkjs</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vtkjs</span>
+
+    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vtkjs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">vtkjs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_vtkjs</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">base64encode</span><span class="p">(</span><span class="n">vtkjs</span><span class="p">)</span> <span class="k">if</span> <span class="n">vtkjs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">vtkjs</span>
+
+    <span class="k">def</span> <span class="nf">export_vtkjs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">'vtk_panel.vtkjs'</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_vtkjs</span><span class="p">())</span></div>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-154795830-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154795830-2');
+</script>
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

@@ -1,0 +1,8 @@
+<map id="inheritance96082cf7d5" name="inheritance96082cf7d5">
+<area shape="rect" id="node1" href="#panel.pane.ace.Ace" target="_top" title="Ace panes allow rendering Ace editor." alt="" coords="1028,25,1148,45"/>
+<area shape="rect" id="node2" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="833,25,990,45"/>
+<area shape="rect" id="node3" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="650,25,795,45"/>
+<area shape="rect" id="node4" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="259,4,417,25"/>
+<area shape="rect" id="node6" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="464,25,612,45"/>
+<area shape="rect" id="node5" title="params(name=String)" alt="" coords="4,4,213,25"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="inheritance13cfd5c22d" name="inheritance13cfd5c22d">
+<area shape="rect" id="node1" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="677,20,804,36"/>
+<area shape="rect" id="node4" href="#panel.pane.markup.DivPaneBase" target="_top" title="Baseclass for Panes which render HTML inside a Bokeh Div." alt="" coords="835,20,989,36"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="528,20,646,36"/>
+<area shape="rect" id="node3" href="#panel.pane.equation.LaTeX" target="_top" title="panel.pane.equation.LaTeX" alt="" coords="1020,20,1149,36"/>
+<area shape="rect" id="node5" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="211,3,339,20"/>
+<area shape="rect" id="node7" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="376,20,497,36"/>
+<area shape="rect" id="node6" title="params(name=String)" alt="" coords="3,3,173,20"/>
+</map>

@@ -1,0 +1,1 @@
+{"header": "{\"msgid\": \"1108\", \"msgtype\": \"PATCH-DOC\"}", "metadata": "{}", "content": "{\"events\": [{\"attr\": \"labels\", \"kind\": \"ModelChanged\", \"model\": {\"id\": \"1105\"}, \"new\": [\"grps\", \"varns\"]}], \"references\": []}"}

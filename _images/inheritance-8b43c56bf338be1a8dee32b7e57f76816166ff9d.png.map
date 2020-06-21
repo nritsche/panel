@@ -1,0 +1,13 @@
+<map id="inheritanceecdf410245" name="inheritanceecdf410245">
+<area shape="rect" id="node1" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="597,46,709,60"/>
+<area shape="rect" id="node5" href="#panel.pane.markup.DivPaneBase" target="_top" title="Baseclass for Panes which render HTML inside a Bokeh Div." alt="" coords="737,46,873,60"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="466,46,570,60"/>
+<area shape="rect" id="node3" href="#panel.pane.image.GIF" target="_top" title="panel.pane.image.GIF" alt="" coords="1053,3,1147,18"/>
+<area shape="rect" id="node4" href="#panel.pane.image.ImageBase" target="_top" title="Encodes an image as base64 and wraps it in a Bokeh Div model." alt="" coords="900,46,1024,60"/>
+<area shape="rect" id="node6" href="#panel.pane.image.JPG" target="_top" title="panel.pane.image.JPG" alt="" coords="1053,31,1147,46"/>
+<area shape="rect" id="node7" href="#panel.pane.image.PNG" target="_top" title="panel.pane.image.PNG" alt="" coords="1051,60,1149,74"/>
+<area shape="rect" id="node8" href="#panel.pane.image.SVG" target="_top" title="panel.pane.image.SVG" alt="" coords="1051,88,1149,102"/>
+<area shape="rect" id="node9" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="186,31,299,46"/>
+<area shape="rect" id="node11" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="332,46,438,60"/>
+<area shape="rect" id="node10" title="params(name=String)" alt="" coords="3,31,153,46"/>
+</map>

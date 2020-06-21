@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>panel.io Package — Panel 0.9.6 documentation</title>
+<meta content="High-level dashboarding for python visualization libraries" name="description"/>
+<meta content="Panel contributors" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../_static/css/main.css" rel="stylesheet"/>
+<link href="../_static/nbsite.css" rel="stylesheet"/>
+<link href="../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../_static/js/main.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="https://panel.holoviz.org/api/panel.io.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../index.html">
+<img alt="Logo" src="../_static/logo_horizontal.png"/>
+</a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+<li class="nav-link doc-head"><a href="//discourse.holoviz.org">Discourse</a></li>
+<li class="nav-link doc-head"><a href="//twitter.com/Panel_org">Twitter</a></li>
+<li class="nav-link doc-head"><a href="//github.com/pyviz/panel">Github</a></li>
+<li class="nav-link">
+<div style="display:inline-block;vertical-align: middle;">
+<div class="search-bar">
+<form action="../search.html" method="get" role="search">
+<input name="q" placeholder="Search" type="search"/>
+<button type="submit">
+<img alt="Search Icon" src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png"/>
+</button>
+</form>
+</div>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="second-nav">
+<nav>
+<ul class="navigation-menu show">
+<li class="nav-link doc-head"><a href="../getting_started/index.html">Getting started</a></li>
+<li class="nav-link doc-head"><a href="../user_guide/index.html">User Guide</a></li>
+<li class="nav-link doc-head"><a href="../gallery/index.html">Gallery</a></li>
+<li class="nav-link doc-head"><a href="../reference/index.html">Reference Gallery</a></li>
+<li class="nav-link doc-head"><a href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="nav-link doc-head"><a href="../releases.html">Releases</a></li>
+<li class="nav-link doc-head"><a href="index.html">API</a></li>
+<li class="nav-link doc-head"><a href="../FAQ.html">FAQ</a></li>
+<li class="nav-link doc-head"><a href="../about.html">About</a></li>
+</ul>
+</nav>
+</div>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Comparisons.html">Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roadmap.html">Road Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/pyviz/panel">Github source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<div class="section" id="panel-io-package">
+<h1>panel.io Package<a class="headerlink" href="#panel-io-package" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils"/>
+<div class="section" id="io-package">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">io</span></code> Package<a class="headerlink" href="#io-package" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.io"></span><p>The io module contains utilities for loading JS components, embedding
+model state, and rendering panel objects.</p>
+</div>
+<hr class="docutils"/>
+<div class="section" id="embed-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">embed</span></code> Module<a class="headerlink" href="#embed-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.io.embed"></span><p>Various utilities for recording and embedding state in a rendered app.</p>
+<dl class="py function">
+<dt id="panel.io.embed.embed_state">
+<code class="sig-prename descclassname">panel.io.embed.</code><code class="sig-name descname">embed_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">panel</span></em>, <em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">doc</span></em>, <em class="sig-param"><span class="n">max_states</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">max_opts</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">json_prefix</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">save_path</span><span class="o">=</span><span class="default_value">'./'</span></em>, <em class="sig-param"><span class="n">load_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">progress</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/embed.html#embed_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.embed.embed_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Embeds the state of the application on a State model which allows
+exporting a static version of an app. This works by finding all
+widgets with a predefined set of options and evaluating the cross
+product of the widget values and recording the resulting events to
+be replayed when exported. The state is recorded on a State model
+which is attached as an additional root on the Document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panel</strong> (<a class="reference internal" href="panel.viewable.html#panel.viewable.Reactive" title="panel.viewable.Reactive"><em>panel.viewable.Reactive</em></a>) – The Reactive component being exported</p></li>
+<li><p><strong>model</strong> (<em>bokeh.model.Model</em>) – The bokeh model being exported</p></li>
+<li><p><strong>doc</strong> (<em>bokeh.document.Document</em>) – The bokeh Document being exported</p></li>
+<li><p><strong>max_states</strong> (<em>int</em><em> (</em><em>default=1000</em><em>)</em>) – The maximum number of states to export</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em><em> (</em><em>default=3</em><em>)</em>) – The max number of ticks sampled in a continuous widget like a slider</p></li>
+<li><p><strong>json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+<li><p><strong>progress</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to report progress</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.embed.link_to_jslink">
+<code class="sig-prename descclassname">panel.io.embed.</code><code class="sig-name descname">link_to_jslink</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">src_spec</span></em>, <em class="sig-param"><span class="n">target</span></em>, <em class="sig-param"><span class="n">tgt_spec</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/embed.html#link_to_jslink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.embed.link_to_jslink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts links declared in Python into JS Links by using the
+declared forward and reverse JS transforms on the source and target.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.embed.param_to_jslink">
+<code class="sig-prename descclassname">panel.io.embed.</code><code class="sig-name descname">param_to_jslink</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">widget</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/embed.html#param_to_jslink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.embed.param_to_jslink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts Param pane widget links into JS links if possible.</p>
+</dd></dl>
+</div>
+<hr class="docutils"/>
+<div class="section" id="model-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> Module<a class="headerlink" href="#model-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.io.model"></span><p>Utilities for manipulating bokeh models.</p>
+<dl class="py function">
+<dt id="panel.io.model.add_to_doc">
+<code class="sig-prename descclassname">panel.io.model.</code><code class="sig-name descname">add_to_doc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">doc</span></em>, <em class="sig-param"><span class="n">hold</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/model.html#add_to_doc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.model.add_to_doc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a model to the supplied Document removing it from any existing Documents.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.model.bokeh_repr">
+<code class="sig-prename descclassname">panel.io.model.</code><code class="sig-name descname">bokeh_repr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">ignored</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/model.html#bokeh_repr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.model.bokeh_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string repr for a bokeh model, useful for recreating
+panel objects using pure bokeh.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.model.diff">
+<code class="sig-prename descclassname">panel.io.model.</code><code class="sig-name descname">diff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span></em>, <em class="sig-param"><span class="n">binary</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">events</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/model.html#diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.model.diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a json diff required to update an existing plot with
+the latest plot data.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.model.patch_cds_msg">
+<code class="sig-prename descclassname">panel.io.model.</code><code class="sig-name descname">patch_cds_msg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">msg</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/model.html#patch_cds_msg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.model.patch_cds_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required for handling messages containing JSON serialized typed
+array from the frontend.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.model.remove_root">
+<code class="sig-prename descclassname">panel.io.model.</code><code class="sig-name descname">remove_root</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">replace</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/model.html#remove_root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.model.remove_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the document from any previously displayed bokeh object</p>
+</dd></dl>
+</div>
+<hr class="docutils"/>
+<div class="section" id="notebook-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">notebook</span></code> Module<a class="headerlink" href="#notebook-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.io.notebook"></span><p>Various utilities for loading JS dependencies and rendering plots
+inside the Jupyter notebook.</p>
+<dl class="py function">
+<dt id="panel.io.notebook.block_comm">
+<code class="sig-prename descclassname">panel.io.notebook.</code><code class="sig-name descname">block_comm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/notebook.html#block_comm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.notebook.block_comm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context manager to temporarily block comm push</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.notebook.ipywidget">
+<code class="sig-prename descclassname">panel.io.notebook.</code><code class="sig-name descname">ipywidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/notebook.html#ipywidget"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.notebook.ipywidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a root model from the Panel object and wraps it in
+a jupyter_bokeh ipywidget BokehModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>object</em>) – Any Panel object or object which can be rendered with Panel</p></li>
+<li><p><strong>**kwargs</strong> (<em>dict</em>) – Keyword arguments passed to the pn.panel utility function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Returns an ipywidget model which renders the Panel object.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.notebook.mimebundle_to_html">
+<code class="sig-prename descclassname">panel.io.notebook.</code><code class="sig-name descname">mimebundle_to_html</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bundle</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/notebook.html#mimebundle_to_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.notebook.mimebundle_to_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a MIME bundle into HTML.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.notebook.push">
+<code class="sig-prename descclassname">panel.io.notebook.</code><code class="sig-name descname">push</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span></em>, <em class="sig-param"><span class="n">comm</span></em>, <em class="sig-param"><span class="n">binary</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/notebook.html#push"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.notebook.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes events stored on the document across the provided comm.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.notebook.render_mimebundle">
+<code class="sig-prename descclassname">panel.io.notebook.</code><code class="sig-name descname">render_mimebundle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">doc</span></em>, <em class="sig-param"><span class="n">comm</span></em>, <em class="sig-param"><span class="n">manager</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/notebook.html#render_mimebundle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.notebook.render_mimebundle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays bokeh output inside a notebook using the PyViz display
+and comms machinery.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.notebook.show_embed">
+<code class="sig-prename descclassname">panel.io.notebook.</code><code class="sig-name descname">show_embed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">panel</span></em>, <em class="sig-param"><span class="n">max_states</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">max_opts</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">save_path</span><span class="o">=</span><span class="default_value">'./'</span></em>, <em class="sig-param"><span class="n">load_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">progress</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/notebook.html#show_embed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.notebook.show_embed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a static version of a panel in a notebook by evaluating
+the set of states defined by the widgets in the model. Note
+this will only work well for simple apps with a relatively
+small state space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+<li><p><strong>progress</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to report progress</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.notebook.show_server">
+<code class="sig-prename descclassname">panel.io.notebook.</code><code class="sig-name descname">show_server</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">panel</span></em>, <em class="sig-param"><span class="n">notebook_url</span></em>, <em class="sig-param"><span class="n">port</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/notebook.html#show_server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.notebook.show_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a bokeh server inline in the notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panel</strong> (<a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable"><em>Viewable</em></a>) – Panel Viewable object to launch a server for</p></li>
+<li><p><strong>notebook_url</strong> (<em>str</em>) – The URL of the running Jupyter notebook server</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+<li><p><strong>server_id</strong> (<em>str</em>) – Unique ID to identify the server with</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>server</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.server.Server</p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<hr class="docutils"/>
+<div class="section" id="resources-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">resources</span></code> Module<a class="headerlink" href="#resources-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.io.resources"></span><p>Patches bokeh resources to make it easy to add external JS and CSS
+resources via the panel.config object.</p>
+<dl class="py function">
+<dt id="panel.io.resources.get_env">
+<code class="sig-prename descclassname">panel.io.resources.</code><code class="sig-name descname">get_env</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/resources.html#get_env"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.resources.get_env" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the correct Jinja2 Environment, also for frozen scripts.</p>
+</dd></dl>
+</div>
+<hr class="docutils"/>
+<div class="section" id="save-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">save</span></code> Module<a class="headerlink" href="#save-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.io.save"></span><p>Defines utilities to save panel objects to files as HTML or PNG.</p>
+<dl class="py function">
+<dt id="panel.io.save.save">
+<code class="sig-prename descclassname">panel.io.save.</code><code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">panel</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resources</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">template</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">template_variables</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">embed</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">max_states</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">max_opts</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">embed_json</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">json_prefix</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">save_path</span><span class="o">=</span><span class="default_value">'./'</span></em>, <em class="sig-param"><span class="n">load_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">progress</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/save.html#save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.save.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves Panel objects to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panel</strong> (<a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable"><em>Viewable</em></a>) – The Panel Viewable to save to file</p></li>
+<li><p><strong>filename</strong> (<em>string</em><em> or </em><em>file-like object</em>) – Filename to save the plot to</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – Optional title for the plot</p></li>
+<li><p><strong>resources</strong> (<em>bokeh resources</em>) – One of the valid bokeh.resources (e.g. CDN or INLINE)</p></li>
+<li><p><strong>template</strong> – template file, as used by bokeh.file_html. If None will use bokeh defaults</p></li>
+<li><p><strong>template_variables</strong> – template_variables file dict, as used by bokeh.file_html</p></li>
+<li><p><strong>embed</strong> (<em>bool</em>) – Whether the state space should be embedded in the saved file.</p></li>
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>embed_json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>json_prefix</strong> (<em>str</em><em> (</em><em>default=''</em><em>)</em>) – Prefix for the randomly json directory</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+<li><p><strong>progress</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to report progress</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.save.save_png">
+<code class="sig-prename descclassname">panel.io.save.</code><code class="sig-name descname">save_png</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">template</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">template_variables</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/save.html#save_png"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.save.save_png" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a bokeh model to png</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>bokeh.model.Model</em>) – Model to save to png</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Filename to save to</p></li>
+<li><p><strong>template</strong> – template file, as used by bokeh.file_html. If None will use bokeh defaults</p></li>
+<li><p><strong>template_variables</strong> – template_variables file dict, as used by bokeh.file_html</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<hr class="docutils"/>
+<div class="section" id="server-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">server</span></code> Module<a class="headerlink" href="#server-module" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img alt="Inheritance diagram of panel.io.server" class="inheritance graphviz" src="../_images/inheritance-7876a19c92225331723abefcfb0abeb12a088320.png" usemap="#inheritancedcf9264c51"/></div>
+<map id="inheritancedcf9264c51" name="inheritancedcf9264c51">
+<area alt="" coords="264,55,527,80" href="#panel.io.server.ProxyFallbackHandler" id="node1" shape="rect" target="_top" title="A `RequestHandler` that wraps another HTTP server callback and"/>
+<area alt="" coords="279,5,511,31" href="#panel.io.server.StoppableThread" id="node3" shape="rect" target="_top" title="Thread class with a stop() method."/>
+</map><span class="target" id="module-panel.io.server"></span><p>Utilities for creating bokeh Server instances.</p>
+<dl class="py class">
+<dt id="panel.io.server.ProxyFallbackHandler">
+<em class="property">class </em><code class="sig-prename descclassname">panel.io.server.</code><code class="sig-name descname">ProxyFallbackHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">application</span><span class="p">:</span> <span class="n">tornado.web.Application</span></em>, <em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n">tornado.httputil.HTTPServerRequest</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/server.html#ProxyFallbackHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tornado.web.RequestHandler</span></code></p>
+<p>A <cite>RequestHandler</cite> that wraps another HTTP server callback and
+proxies the subpath.</p>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.add_header">
+<code class="sig-name descname">add_header</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>bytes<span class="p">, </span>str<span class="p">, </span>int<span class="p">, </span>numbers.Integral<span class="p">, </span>datetime.datetime<span class="p">]</span></span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.add_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the given response header and value.</p>
+<p>Unlike <cite>set_header</cite>, <cite>add_header</cite> may be called multiple times
+to return multiple values for the same header.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.check_etag_header">
+<code class="sig-name descname">check_etag_header</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → bool<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.check_etag_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the <code class="docutils literal notranslate"><span class="pre">Etag</span></code> header against requests’s <code class="docutils literal notranslate"><span class="pre">If-None-Match</span></code>.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the request’s Etag matches and a 304 should be
+returned. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">set_etag_header</span><span class="p">()</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_etag_header</span><span class="p">():</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_status</span><span class="p">(</span><span class="mi">304</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+<p>This method is called automatically when the request is finished,
+but may be called earlier for applications that override
+<cite>compute_etag</cite> and want to do an early check for <code class="docutils literal notranslate"><span class="pre">If-None-Match</span></code>
+before completing the request.  The <code class="docutils literal notranslate"><span class="pre">Etag</span></code> header should be set
+(perhaps with <cite>set_etag_header</cite>) before calling this method.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.check_xsrf_cookie">
+<code class="sig-name descname">check_xsrf_cookie</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.check_xsrf_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies that the <code class="docutils literal notranslate"><span class="pre">_xsrf</span></code> cookie matches the <code class="docutils literal notranslate"><span class="pre">_xsrf</span></code> argument.</p>
+<p>To prevent cross-site request forgery, we set an <code class="docutils literal notranslate"><span class="pre">_xsrf</span></code>
+cookie and include the same value as a non-cookie
+field with all <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests. If the two do not match, we
+reject the form submission as a potential forgery.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">_xsrf</span></code> value may be set as either a form field named <code class="docutils literal notranslate"><span class="pre">_xsrf</span></code>
+or in a custom HTTP header named <code class="docutils literal notranslate"><span class="pre">X-XSRFToken</span></code> or <code class="docutils literal notranslate"><span class="pre">X-CSRFToken</span></code>
+(the latter is accepted for compatibility with Django).</p>
+<p>See <a class="reference external" href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">http://en.wikipedia.org/wiki/Cross-site_request_forgery</a></p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.2.2: </span>Added support for cookie version 2.  Both versions 1 and 2 are
+supported.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.clear">
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets all headers and content for this response.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.clear_all_cookies">
+<code class="sig-name descname">clear_all_cookies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'/'</span></em>, <em class="sig-param"><span class="n">domain</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.clear_all_cookies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all the cookies the user sent with this request.</p>
+<p>See <cite>clear_cookie</cite> for more information on the path and domain
+parameters.</p>
+<p>Similar to <cite>set_cookie</cite>, the effect of this method will not be
+seen until the following request.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.2: </span>Added the <code class="docutils literal notranslate"><span class="pre">path</span></code> and <code class="docutils literal notranslate"><span class="pre">domain</span></code> parameters.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.clear_cookie">
+<code class="sig-name descname">clear_cookie</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'/'</span></em>, <em class="sig-param"><span class="n">domain</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.clear_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the cookie with the given name.</p>
+<p>Due to limitations of the cookie protocol, you must pass the same
+path and domain to clear a cookie as were used when that cookie
+was set (but there is no way to find out on the server side
+which values were used for a given cookie).</p>
+<p>Similar to <cite>set_cookie</cite>, the effect of this method will not be
+seen until the following request.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.clear_header">
+<code class="sig-name descname">clear_header</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.clear_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears an outgoing header, undoing a previous <cite>set_header</cite> call.</p>
+<p>Note that this method does not apply to multi-valued headers
+set by <cite>add_header</cite>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.compute_etag">
+<code class="sig-name descname">compute_etag</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → Optional<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.compute_etag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the etag header to be used for this request.</p>
+<p>By default uses a hash of the content written so far.</p>
+<p>May be overridden to provide custom etag implementations,
+or may return None to disable tornado’s default etag support.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.cookies">
+<em class="property">property </em><code class="sig-name descname">cookies</code><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.cookies" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for
+<cite>self.request.cookies &lt;.httputil.HTTPServerRequest.cookies&gt;</cite>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.create_signed_value">
+<code class="sig-name descname">create_signed_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>bytes<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">version</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → bytes<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.create_signed_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signs and timestamps a string so it cannot be forged.</p>
+<p>Normally used via set_secure_cookie, but provided as a separate
+method for non-cookie uses.  To decode a value not stored
+as a cookie use the optional value argument to get_secure_cookie.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.2.1: </span>Added the <code class="docutils literal notranslate"><span class="pre">version</span></code> argument.  Introduced cookie version 2
+and made it the default.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.create_template_loader">
+<code class="sig-name descname">create_template_loader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> → tornado.template.BaseLoader<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.create_template_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new template loader for the given path.</p>
+<p>May be overridden by subclasses.  By default returns a
+directory-based loader on the given path, using the
+<code class="docutils literal notranslate"><span class="pre">autoescape</span></code> and <code class="docutils literal notranslate"><span class="pre">template_whitespace</span></code> application
+settings.  If a <code class="docutils literal notranslate"><span class="pre">template_loader</span></code> application setting is
+supplied, uses that instead.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.current_user">
+<em class="property">property </em><code class="sig-name descname">current_user</code><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.current_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>The authenticated user for this request.</p>
+<p>This is set in one of two ways:</p>
+<ul>
+<li><p>A subclass may override <cite>get_current_user()</cite>, which will be called
+automatically the first time <code class="docutils literal notranslate"><span class="pre">self.current_user</span></code> is accessed.
+<cite>get_current_user()</cite> will only be called once per request,
+and is cached for future access:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_current_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">user_cookie</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_secure_cookie</span><span class="p">(</span><span class="s2">"user"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user_cookie</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">user_cookie</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</li>
+<li><p>It may be set as a normal variable, typically from an overridden
+<cite>prepare()</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@gen</span><span class="o">.</span><span class="n">coroutine</span>
+<span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">user_id_cookie</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_secure_cookie</span><span class="p">(</span><span class="s2">"user_id"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user_id_cookie</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_user</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">load_user</span><span class="p">(</span><span class="n">user_id_cookie</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Note that <cite>prepare()</cite> may be a coroutine while <cite>get_current_user()</cite>
+may not, so the latter form is necessary if loading the user requires
+asynchronous operations.</p>
+<p>The user object may be any type of the application’s choosing.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.data_received">
+<code class="sig-name descname">data_received</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chunk</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> → Optional[Awaitable[None]]<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.data_received" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method to handle streamed request data.</p>
+<p>Requires the <cite>.stream_request_body</cite> decorator.</p>
+<p>May be a coroutine for flow control.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.decode_argument">
+<code class="sig-name descname">decode_argument</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">bytes</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → str<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.decode_argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes an argument from the request.</p>
+<p>The argument has been percent-decoded and is now a byte string.
+By default, this method decodes the argument as utf-8 and returns
+a unicode string, but this may be overridden in subclasses.</p>
+<p>This method is used as a filter for both <cite>get_argument()</cite> and for
+values extracted from the url and passed to <cite>get()</cite>/<cite>post()</cite>/etc.</p>
+<p>The name of the argument is provided if known, but may be None
+(e.g. for unnamed groups in the url regex).</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.detach">
+<code class="sig-name descname">detach</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → tornado.iostream.IOStream<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.detach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take control of the underlying stream.</p>
+<p>Returns the underlying <cite>.IOStream</cite> object and stops all
+further HTTP processing. Intended for implementing protocols
+like websockets that tunnel over an HTTP handshake.</p>
+<p>This method is only supported when HTTP/1.1 is used.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 5.1.</span></p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.finish">
+<code class="sig-name descname">finish</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chunk</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>bytes<span class="p">, </span>dict<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → Future[None]<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finishes this response, ending the HTTP request.</p>
+<p>Passing a <code class="docutils literal notranslate"><span class="pre">chunk</span></code> to <code class="docutils literal notranslate"><span class="pre">finish()</span></code> is equivalent to passing that
+chunk to <code class="docutils literal notranslate"><span class="pre">write()</span></code> and then calling <code class="docutils literal notranslate"><span class="pre">finish()</span></code> with no arguments.</p>
+<p>Returns a <cite>.Future</cite> which may optionally be awaited to track the sending
+of the response to the client. This <cite>.Future</cite> resolves when all the response
+data has been sent, and raises an error if the connection is closed before all
+data can be sent.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.1: </span>Now returns a <cite>.Future</cite> instead of <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.flush">
+<code class="sig-name descname">flush</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_footers</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> → Future[None]<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes the current output buffer to the network.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">callback</span></code> argument, if given, can be used for flow control:
+it will be run when all flushed data has been written to the socket.
+Note that only one flush callback can be outstanding at a time;
+if another flush occurs before the previous flush’s callback
+has been run, the previous callback will be discarded.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 4.0: </span>Now returns a <cite>.Future</cite> if no callback is given.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 6.0: </span>The <code class="docutils literal notranslate"><span class="pre">callback</span></code> argument was removed.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_argument">
+<code class="sig-name descname">get_argument</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">default: Union[None</em>, <em class="sig-param">str</em>, <em class="sig-param">tornado.web._ArgDefaultMarker] = &lt;tornado.web._ArgDefaultMarker object&gt;</em>, <em class="sig-param">strip: bool = True</em><span class="sig-paren">)</span> → Optional<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the argument with the given name.</p>
+<p>If default is not provided, the argument is considered to be
+required, and we raise a <cite>MissingArgumentError</cite> if it is missing.</p>
+<p>If the argument appears in the request more than once, we return the
+last value.</p>
+<p>This method searches both the query and body arguments.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_arguments">
+<code class="sig-name descname">get_arguments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">strip</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> → List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the arguments with the given name.</p>
+<p>If the argument is not present, returns an empty list.</p>
+<p>This method searches both the query and body arguments.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_body_argument">
+<code class="sig-name descname">get_body_argument</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">default: Union[None</em>, <em class="sig-param">str</em>, <em class="sig-param">tornado.web._ArgDefaultMarker] = &lt;tornado.web._ArgDefaultMarker object&gt;</em>, <em class="sig-param">strip: bool = True</em><span class="sig-paren">)</span> → Optional<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_body_argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the argument with the given name
+from the request body.</p>
+<p>If default is not provided, the argument is considered to be
+required, and we raise a <cite>MissingArgumentError</cite> if it is missing.</p>
+<p>If the argument appears in the url more than once, we return the
+last value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_body_arguments">
+<code class="sig-name descname">get_body_arguments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">strip</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> → List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_body_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the body arguments with the given name.</p>
+<p>If the argument is not present, returns an empty list.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_browser_locale">
+<code class="sig-name descname">get_browser_locale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'en_US'</span></em><span class="sig-paren">)</span> → tornado.locale.Locale<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_browser_locale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the user’s locale from <code class="docutils literal notranslate"><span class="pre">Accept-Language</span></code> header.</p>
+<p>See <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4</a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_cookie">
+<code class="sig-name descname">get_cookie</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">default</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → Optional<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the request cookie with the given name.</p>
+<p>If the named cookie is not present, returns <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
+<p>This method only returns cookies that were present in the request.
+It does not see the outgoing cookies set by <cite>set_cookie</cite> in this
+handler.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_current_user">
+<code class="sig-name descname">get_current_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → Any<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_current_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to determine the current user from, e.g., a cookie.</p>
+<p>This method may not be a coroutine.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_login_url">
+<code class="sig-name descname">get_login_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → str<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_login_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to customize the login URL based on the request.</p>
+<p>By default, we use the <code class="docutils literal notranslate"><span class="pre">login_url</span></code> application setting.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_query_argument">
+<code class="sig-name descname">get_query_argument</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">default: Union[None</em>, <em class="sig-param">str</em>, <em class="sig-param">tornado.web._ArgDefaultMarker] = &lt;tornado.web._ArgDefaultMarker object&gt;</em>, <em class="sig-param">strip: bool = True</em><span class="sig-paren">)</span> → Optional<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_query_argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the argument with the given name
+from the request query string.</p>
+<p>If default is not provided, the argument is considered to be
+required, and we raise a <cite>MissingArgumentError</cite> if it is missing.</p>
+<p>If the argument appears in the url more than once, we return the
+last value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_query_arguments">
+<code class="sig-name descname">get_query_arguments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">strip</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> → List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_query_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the query arguments with the given name.</p>
+<p>If the argument is not present, returns an empty list.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_secure_cookie">
+<code class="sig-name descname">get_secure_cookie</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_age_days</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">31</span></em>, <em class="sig-param"><span class="n">min_version</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → Optional<span class="p">[</span>bytes<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_secure_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the given signed cookie if it validates, or None.</p>
+<p>The decoded cookie value is returned as a byte string (unlike
+<cite>get_cookie</cite>).</p>
+<p>Similar to <cite>get_cookie</cite>, this method only returns cookies that
+were present in the request. It does not see outgoing cookies set by
+<cite>set_secure_cookie</cite> in this handler.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.2.1: </span>Added the <code class="docutils literal notranslate"><span class="pre">min_version</span></code> argument.  Introduced cookie version 2;
+both versions 1 and 2 are accepted by default.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_secure_cookie_key_version">
+<code class="sig-name descname">get_secure_cookie_key_version</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → Optional<span class="p">[</span>int<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_secure_cookie_key_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the signing key version of the secure cookie.</p>
+<p>The version is returned as int.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_status">
+<code class="sig-name descname">get_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → int<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the status code for our response.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_template_namespace">
+<code class="sig-name descname">get_template_namespace</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_template_namespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary to be used as the default template namespace.</p>
+<p>May be overridden by subclasses to add or modify values.</p>
+<p>The results of this method will be combined with additional
+defaults in the <cite>tornado.template</cite> module and keyword arguments
+to <cite>render</cite> or <cite>render_string</cite>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_template_path">
+<code class="sig-name descname">get_template_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → Optional<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_template_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to customize template path for each handler.</p>
+<p>By default, we use the <code class="docutils literal notranslate"><span class="pre">template_path</span></code> application setting.
+Return None to load templates relative to the calling file.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.get_user_locale">
+<code class="sig-name descname">get_user_locale</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → Optional<span class="p">[</span>tornado.locale.Locale<span class="p">]</span><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.get_user_locale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to determine the locale from the authenticated user.</p>
+<p>If None is returned, we fall back to <cite>get_browser_locale()</cite>.</p>
+<p>This method should return a <cite>tornado.locale.Locale</cite> object,
+most likely obtained via a call like <code class="docutils literal notranslate"><span class="pre">tornado.locale.get("en")</span></code></p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.locale">
+<em class="property">property </em><code class="sig-name descname">locale</code><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.locale" title="Permalink to this definition">¶</a></dt>
+<dd><p>The locale for the current session.</p>
+<p>Determined by either <cite>get_user_locale</cite>, which you can override to
+set the locale based on, e.g., a user preference stored in a
+database, or <cite>get_browser_locale</cite>, which uses the <code class="docutils literal notranslate"><span class="pre">Accept-Language</span></code>
+header.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.log_exception">
+<code class="sig-name descname">log_exception</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Type<span class="p">[</span>BaseException<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>BaseException<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">tb</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>traceback<span class="p">]</span></span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.log_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to customize logging of uncaught exceptions.</p>
+<p>By default logs instances of <cite>HTTPError</cite> as warnings without
+stack traces (on the <code class="docutils literal notranslate"><span class="pre">tornado.general</span></code> logger), and all
+other exceptions as errors with stack traces (on the
+<code class="docutils literal notranslate"><span class="pre">tornado.application</span></code> logger).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.1.</span></p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.on_connection_close">
+<code class="sig-name descname">on_connection_close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.on_connection_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called in async handlers if the client closed the connection.</p>
+<p>Override this to clean up resources associated with
+long-lived connections.  Note that this method is called only if
+the connection was closed during asynchronous processing; if you
+need to do cleanup after every request override <cite>on_finish</cite>
+instead.</p>
+<p>Proxies may keep a connection open for a time (perhaps
+indefinitely) after the client has gone away, so this method
+may not be called promptly after the end user closes their
+connection.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.on_finish">
+<code class="sig-name descname">on_finish</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.on_finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called after the end of a request.</p>
+<p>Override this method to perform cleanup, logging, etc.
+This method is a counterpart to <cite>prepare</cite>.  <code class="docutils literal notranslate"><span class="pre">on_finish</span></code> may
+not produce any output, as it is called after the response
+has been sent to the client.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.prepare">
+<code class="sig-name descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/server.html#ProxyFallbackHandler.prepare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at the beginning of a request before  <cite>get</cite>/<cite>post</cite>/etc.</p>
+<p>Override this method to perform common initialization regardless
+of the request method.</p>
+<p>Asynchronous support: Use <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> or decorate this method with
+<cite>.gen.coroutine</cite> to make it asynchronous.
+If this method returns an  <code class="docutils literal notranslate"><span class="pre">Awaitable</span></code> execution will not proceed
+until the <code class="docutils literal notranslate"><span class="pre">Awaitable</span></code> is done.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.1: </span>Asynchronous support.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.redirect">
+<code class="sig-name descname">redirect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">permanent</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">status</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a redirect to the given (optionally relative) URL.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">status</span></code> argument is specified, that value is used as the
+HTTP status code; otherwise either 301 (permanent) or 302
+(temporary) is chosen based on the <code class="docutils literal notranslate"><span class="pre">permanent</span></code> argument.
+The default is 302 (temporary).</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.render">
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → Future[None]<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the template with the given arguments as the response.</p>
+<p><code class="docutils literal notranslate"><span class="pre">render()</span></code> calls <code class="docutils literal notranslate"><span class="pre">finish()</span></code>, so no other output methods can be called
+after it.</p>
+<p>Returns a <cite>.Future</cite> with the same semantics as the one returned by <cite>finish</cite>.
+Awaiting this <cite>.Future</cite> is optional.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.1: </span>Now returns a <cite>.Future</cite> instead of <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.render_embed_css">
+<code class="sig-name descname">render_embed_css</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">css_embed</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>bytes<span class="p">]</span></span></em><span class="sig-paren">)</span> → bytes<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.render_embed_css" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default method used to render the final embedded css for the
+rendered webpage.</p>
+<p>Override this method in a sub-classed controller to change the output.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.render_embed_js">
+<code class="sig-name descname">render_embed_js</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">js_embed</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>bytes<span class="p">]</span></span></em><span class="sig-paren">)</span> → bytes<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.render_embed_js" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default method used to render the final embedded js for the
+rendered webpage.</p>
+<p>Override this method in a sub-classed controller to change the output.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.render_linked_css">
+<code class="sig-name descname">render_linked_css</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">css_files</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> → str<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.render_linked_css" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default method used to render the final css links for the
+rendered webpage.</p>
+<p>Override this method in a sub-classed controller to change the output.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.render_linked_js">
+<code class="sig-name descname">render_linked_js</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">js_files</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> → str<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.render_linked_js" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default method used to render the final js links for the
+rendered webpage.</p>
+<p>Override this method in a sub-classed controller to change the output.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.render_string">
+<code class="sig-name descname">render_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → bytes<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.render_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the given template with the given arguments.</p>
+<p>We return the generated byte string (in utf8). To generate and
+write a template as a response, use render() above.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.require_setting">
+<code class="sig-name descname">require_setting</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">feature</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'this feature'</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.require_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an exception if the given app setting is not defined.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.reverse_url">
+<code class="sig-name descname">reverse_url</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → str<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.reverse_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <cite>Application.reverse_url</cite>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.send_error">
+<code class="sig-name descname">send_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">status_code</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">500</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.send_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the given HTTP error code to the browser.</p>
+<p>If <cite>flush()</cite> has already been called, it is not possible to send
+an error, so this method will simply terminate the response.
+If output has been written but not yet flushed, it will be discarded
+and replaced with the error page.</p>
+<p>Override <cite>write_error()</cite> to customize the error page that is returned.
+Additional keyword arguments are passed through to <cite>write_error</cite>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.set_cookie">
+<code class="sig-name descname">set_cookie</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>bytes<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">domain</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">expires</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>float<span class="p">, </span>Tuple<span class="p">, </span>datetime.datetime<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'/'</span></em>, <em class="sig-param"><span class="n">expires_days</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.set_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets an outgoing cookie name/value with the given options.</p>
+<p>Newly-set cookies are not immediately visible via <cite>get_cookie</cite>;
+they are not present until the next request.</p>
+<p>expires may be a numeric timestamp as returned by <cite>time.time</cite>,
+a time tuple as returned by <cite>time.gmtime</cite>, or a
+<cite>datetime.datetime</cite> object.</p>
+<p>Additional keyword arguments are set on the cookies.Morsel
+directly.
+See <a class="reference external" href="https://docs.python.org/3/library/http.cookies.html#http.cookies.Morsel">https://docs.python.org/3/library/http.cookies.html#http.cookies.Morsel</a>
+for available attributes.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.set_default_headers">
+<code class="sig-name descname">set_default_headers</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.set_default_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to set HTTP headers at the beginning of the request.</p>
+<p>For example, this is the place to set a custom <code class="docutils literal notranslate"><span class="pre">Server</span></code> header.
+Note that setting such headers in the normal flow of request
+processing may not do what you want, since headers may be reset
+during error handling.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.set_etag_header">
+<code class="sig-name descname">set_etag_header</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.set_etag_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the response’s Etag header using <code class="docutils literal notranslate"><span class="pre">self.compute_etag()</span></code>.</p>
+<p>Note: no header will be set if <code class="docutils literal notranslate"><span class="pre">compute_etag()</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This method is called automatically when the request is finished.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.set_header">
+<code class="sig-name descname">set_header</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>bytes<span class="p">, </span>str<span class="p">, </span>int<span class="p">, </span>numbers.Integral<span class="p">, </span>datetime.datetime<span class="p">]</span></span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.set_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the given response header name and value.</p>
+<p>All header values are converted to strings (<cite>datetime</cite> objects
+are formatted according to the HTTP specification for the
+<code class="docutils literal notranslate"><span class="pre">Date</span></code> header).</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.set_secure_cookie">
+<code class="sig-name descname">set_secure_cookie</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>bytes<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">expires_days</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">version</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.set_secure_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signs and timestamps a cookie so it cannot be forged.</p>
+<p>You must specify the <code class="docutils literal notranslate"><span class="pre">cookie_secret</span></code> setting in your Application
+to use this method. It should be a long, random sequence of bytes
+to be used as the HMAC secret for the signature.</p>
+<p>To read a cookie set with this method, use <cite>get_secure_cookie()</cite>.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">expires_days</span></code> parameter sets the lifetime of the
+cookie in the browser, but is independent of the <code class="docutils literal notranslate"><span class="pre">max_age_days</span></code>
+parameter to <cite>get_secure_cookie</cite>.</p>
+<p>Secure cookies may contain arbitrary byte values, not just unicode
+strings (unlike regular cookies)</p>
+<p>Similar to <cite>set_cookie</cite>, the effect of this method will not be
+seen until the following request.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.2.1: </span>Added the <code class="docutils literal notranslate"><span class="pre">version</span></code> argument.  Introduced cookie version 2
+and made it the default.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.set_status">
+<code class="sig-name descname">set_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">status_code</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reason</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.set_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the status code for our response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>status_code</strong> (<em>int</em>) – Response status code.</p></li>
+<li><p><strong>reason</strong> (<em>str</em>) – Human-readable reason phrase describing the status
+code. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, it will be filled in from
+<cite>http.client.responses</cite> or “Unknown”.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.0: </span>No longer validates that the response code is in
+<cite>http.client.responses</cite>.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.settings">
+<em class="property">property </em><code class="sig-name descname">settings</code><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for <cite>self.application.settings &lt;Application.settings&gt;</cite>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.static_url">
+<code class="sig-name descname">static_url</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">include_host</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → str<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.static_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a static URL for the given relative static file path.</p>
+<p>This method requires you set the <code class="docutils literal notranslate"><span class="pre">static_path</span></code> setting in your
+application (which specifies the root directory of your static
+files).</p>
+<p>This method returns a versioned url (by default appending
+<code class="docutils literal notranslate"><span class="pre">?v=&lt;signature&gt;</span></code>), which allows the static files to be
+cached indefinitely.  This can be disabled by passing
+<code class="docutils literal notranslate"><span class="pre">include_version=False</span></code> (in the default implementation;
+other static file implementations are not required to support
+this, but they may support other options).</p>
+<p>By default this method returns URLs relative to the current
+host, but if <code class="docutils literal notranslate"><span class="pre">include_host</span></code> is true the URL returned will be
+absolute.  If this handler has an <code class="docutils literal notranslate"><span class="pre">include_host</span></code> attribute,
+that value will be used as the default for all <cite>static_url</cite>
+calls that do not pass <code class="docutils literal notranslate"><span class="pre">include_host</span></code> as a keyword argument.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chunk</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>bytes<span class="p">, </span>dict<span class="p">]</span></span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the given chunk to the output buffer.</p>
+<p>To write the output to the network, use the <cite>flush()</cite> method below.</p>
+<p>If the given chunk is a dictionary, we write it as JSON and set
+the Content-Type of the response to be <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.
+(if you want to send JSON as a different <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>, call
+<code class="docutils literal notranslate"><span class="pre">set_header</span></code> <em>after</em> calling <code class="docutils literal notranslate"><span class="pre">write()</span></code>).</p>
+<p>Note that lists are not converted to JSON because of a potential
+cross-site security vulnerability.  All JSON output should be
+wrapped in a dictionary.  More details at
+<a class="reference external" href="http://haacked.com/archive/2009/06/25/json-hijacking.aspx/">http://haacked.com/archive/2009/06/25/json-hijacking.aspx/</a> and
+<a class="reference external" href="https://github.com/facebook/tornado/issues/1009">https://github.com/facebook/tornado/issues/1009</a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.write_error">
+<code class="sig-name descname">write_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">status_code</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.write_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to implement custom error pages.</p>
+<p><code class="docutils literal notranslate"><span class="pre">write_error</span></code> may call <cite>write</cite>, <cite>render</cite>, <cite>set_header</cite>, etc
+to produce output as usual.</p>
+<p>If this error was caused by an uncaught exception (including
+HTTPError), an <code class="docutils literal notranslate"><span class="pre">exc_info</span></code> triple will be available as
+<code class="docutils literal notranslate"><span class="pre">kwargs["exc_info"]</span></code>.  Note that this exception may not be
+the “current” exception for purposes of methods like
+<code class="docutils literal notranslate"><span class="pre">sys.exc_info()</span></code> or <code class="docutils literal notranslate"><span class="pre">traceback.format_exc</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.xsrf_form_html">
+<code class="sig-name descname">xsrf_form_html</code><span class="sig-paren">(</span><span class="sig-paren">)</span> → str<a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.xsrf_form_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>An HTML <code class="docutils literal notranslate"><span class="pre">&lt;input/&gt;</span></code> element to be included with all POST forms.</p>
+<p>It defines the <code class="docutils literal notranslate"><span class="pre">_xsrf</span></code> input value, which we check on all POST
+requests to prevent cross-site request forgery. If you have set
+the <code class="docutils literal notranslate"><span class="pre">xsrf_cookies</span></code> application setting, you must include this
+HTML within all of your HTML forms.</p>
+<p>In a template, this method should be called with <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">module</span>
+<span class="pre">xsrf_form_html()</span> <span class="pre">%}</span></code></p>
+<p>See <cite>check_xsrf_cookie()</cite> above for more information.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.ProxyFallbackHandler.xsrf_token">
+<em class="property">property </em><code class="sig-name descname">xsrf_token</code><a class="headerlink" href="#panel.io.server.ProxyFallbackHandler.xsrf_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>The XSRF-prevention token for the current user/session.</p>
+<p>To prevent cross-site request forgery, we set an ‘_xsrf’ cookie
+and include the same ‘_xsrf’ value as an argument with all POST
+requests. If the two do not match, we reject the form submission
+as a potential forgery.</p>
+<p>See <a class="reference external" href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">http://en.wikipedia.org/wiki/Cross-site_request_forgery</a></p>
+<p>This property is of type <cite>bytes</cite>, but it contains only ASCII
+characters. If a character string is required, there is no
+need to base64-encode it; just decode the byte string as
+UTF-8.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.2.2: </span>The xsrf token will now be have a random mask applied in every
+request, which makes it safe to include the token in pages
+that are compressed.  See <a class="reference external" href="http://breachattack.com">http://breachattack.com</a> for more
+information on the issue fixed by this change.  Old (version 1)
+cookies will be converted to version 2 when this method is called
+unless the <code class="docutils literal notranslate"><span class="pre">xsrf_cookie_version</span></code> <cite>Application</cite> setting is
+set to 1.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 4.3: </span>The <code class="docutils literal notranslate"><span class="pre">xsrf_cookie_kwargs</span></code> <cite>Application</cite> setting may be
+used to supply additional cookie options (which will be
+passed directly to <cite>set_cookie</cite>). For example,
+<code class="docutils literal notranslate"><span class="pre">xsrf_cookie_kwargs=dict(httponly=True,</span> <span class="pre">secure=True)</span></code>
+will set the <code class="docutils literal notranslate"><span class="pre">secure</span></code> and <code class="docutils literal notranslate"><span class="pre">httponly</span></code> flags on the
+<code class="docutils literal notranslate"><span class="pre">_xsrf</span></code> cookie.</p>
+</div>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="panel.io.server.StoppableThread">
+<em class="property">class </em><code class="sig-prename descclassname">panel.io.server.</code><code class="sig-name descname">StoppableThread</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">io_loop</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/server.html#StoppableThread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.server.StoppableThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>Thread class with a stop() method.</p>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.daemon">
+<em class="property">property </em><code class="sig-name descname">daemon</code><a class="headerlink" href="#panel.io.server.StoppableThread.daemon" title="Permalink to this definition">¶</a></dt>
+<dd><p>A boolean value indicating whether this thread is a daemon thread.</p>
+<p>This must be set before start() is called, otherwise RuntimeError is
+raised. Its initial value is inherited from the creating thread; the
+main thread is not a daemon thread and therefore all threads created in
+the main thread default to daemon = False.</p>
+<p>The entire Python program exits when only daemon threads are left.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.ident">
+<em class="property">property </em><code class="sig-name descname">ident</code><a class="headerlink" href="#panel.io.server.StoppableThread.ident" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thread identifier of this thread or None if it has not been started.</p>
+<p>This is a nonzero integer. See the get_ident() function. Thread
+identifiers may be recycled when a thread exits and another thread is
+created. The identifier is available even after the thread has exited.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.isAlive">
+<code class="sig-name descname">isAlive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#panel.io.server.StoppableThread.isAlive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the thread is alive.</p>
+<p>This method is deprecated, use is_alive() instead.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.is_alive">
+<code class="sig-name descname">is_alive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#panel.io.server.StoppableThread.is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the thread is alive.</p>
+<p>This method returns True just before the run() method starts until just
+after the run() method terminates. The module function enumerate()
+returns a list of all alive threads.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.join">
+<code class="sig-name descname">join</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.io.server.StoppableThread.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait until the thread terminates.</p>
+<p>This blocks the calling thread until the thread whose join() method is
+called terminates – either normally or through an unhandled exception
+or until the optional timeout occurs.</p>
+<p>When the timeout argument is present and not None, it should be a
+floating point number specifying a timeout for the operation in seconds
+(or fractions thereof). As join() always returns None, you must call
+is_alive() after join() to decide whether a timeout happened – if the
+thread is still alive, the join() call timed out.</p>
+<p>When the timeout argument is not present or None, the operation will
+block until the thread terminates.</p>
+<p>A thread can be join()ed many times.</p>
+<p>join() raises a RuntimeError if an attempt is made to join the current
+thread as that would cause a deadlock. It is also an error to join() a
+thread before it has been started and attempts to do so raises the same
+exception.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#panel.io.server.StoppableThread.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string used for identification purposes only.</p>
+<p>It has no semantics. Multiple threads may be given the same name. The
+initial name is set by the constructor.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/server.html#StoppableThread.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.server.StoppableThread.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method representing the thread’s activity.</p>
+<p>You may override this method in a subclass. The standard run() method
+invokes the callable object passed to the object’s constructor as the
+target argument, if any, with sequential and keyword arguments taken
+from the args and kwargs arguments, respectively.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.io.server.StoppableThread.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#panel.io.server.StoppableThread.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the thread’s activity.</p>
+<p>It must be called at most once per thread object. It arranges for the
+object’s run() method to be invoked in a separate thread of control.</p>
+<p>This method will raise a RuntimeError if called more than once on the
+same thread object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.server.get_server">
+<code class="sig-prename descclassname">panel.io.server.</code><code class="sig-name descname">get_server</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">panel</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">websocket_origin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">loop</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/server.html#get_server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.server.get_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Server instance with this panel attached as the root
+app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panel</strong> (<a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable"><em>Viewable</em></a><em>, </em><em>function</em><em> or </em><em>{str: Viewable}</em>) – A Panel object, a function returning a Panel object or a
+dictionary mapping from the URL slug to either.</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+<li><p><strong>websocket_origin</strong> (<em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>) </em><em>(</em><em>optional</em><em>)</em>) – <p>A list of hosts that can connect to the websocket.</p>
+<p>This is typically required when embedding a server app in
+an external web site.</p>
+<p>If None, “localhost” is used.</p>
+</p></li>
+<li><p><strong>loop</strong> (<em>tornado.ioloop.IOLoop</em><em> (</em><em>optional</em><em>, </em><em>default=IOLoop.current</em><em>(</em><em>)</em><em>)</em>) – The tornado IOLoop to run the Server on</p></li>
+<li><p><strong>show</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to open the server in a new browser tab on start</p></li>
+<li><p><strong>start</strong> (<em>boolean</em><em>(</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to start the Server</p></li>
+<li><p><strong>title</strong> (<em>str</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – An HTML title for the application</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to report the address and port</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments to pass to Server instance</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>server</strong> – Bokeh Server instance running this panel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.server.server.Server</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.server.serve">
+<code class="sig-prename descclassname">panel.io.server.</code><code class="sig-name descname">serve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">panels</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">websocket_origin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">loop</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/server.html#serve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.server.serve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows serving one or more panel objects on a single server.
+The panels argument should be either a Panel object or a function
+returning a Panel object or a dictionary of these two. If a
+dictionary is supplied the keys represent the slugs at which
+each app is served, e.g. <cite>serve({‘app’: panel1, ‘app2’: panel2})</cite>
+will serve apps at /app and /app2 on the server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panel</strong> (<a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable"><em>Viewable</em></a><em>, </em><em>function</em><em> or </em><em>{str: Viewable}</em>) – A Panel object, a function returning a Panel object or a
+dictionary mapping from the URL slug to either.</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+<li><p><strong>websocket_origin</strong> (<em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>) </em><em>(</em><em>optional</em><em>)</em>) – <p>A list of hosts that can connect to the websocket.</p>
+<p>This is typically required when embedding a server app in
+an external web site.</p>
+<p>If None, “localhost” is used.</p>
+</p></li>
+<li><p><strong>loop</strong> (<em>tornado.ioloop.IOLoop</em><em> (</em><em>optional</em><em>, </em><em>default=IOLoop.current</em><em>(</em><em>)</em><em>)</em>) – The tornado IOLoop to run the Server on</p></li>
+<li><p><strong>show</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to open the server in a new browser tab on start</p></li>
+<li><p><strong>start</strong> (<em>boolean</em><em>(</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to start the Server</p></li>
+<li><p><strong>title</strong> (<em>str</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – An HTML title for the application</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to print the address and port</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments to pass to Server instance</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="panel.io.server.unlocked">
+<code class="sig-prename descclassname">panel.io.server.</code><code class="sig-name descname">unlocked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/io/server.html#unlocked"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.io.server.unlocked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context manager which unlocks a Document and dispatches
+ModelChangedEvents triggered in the context body to all sockets
+on current sessions.</p>
+</dd></dl>
+</div>
+<hr class="docutils"/>
+<div class="section" id="state-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">state</span></code> Module<a class="headerlink" href="#state-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.io.state"></span><p>Various utilities for recording and embedding state in a rendered app.</p>
+<hr class="docutils"/>
+</div>
+</div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-154795830-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154795830-2');
+</script>
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

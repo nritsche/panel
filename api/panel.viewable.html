@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>viewable Module — Panel 0.9.6 documentation</title>
+<meta content="High-level dashboarding for python visualization libraries" name="description"/>
+<meta content="Panel contributors" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../_static/css/main.css" rel="stylesheet"/>
+<link href="../_static/nbsite.css" rel="stylesheet"/>
+<link href="../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../_static/js/main.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="https://panel.holoviz.org/api/panel.viewable.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../index.html">
+<img alt="Logo" src="../_static/logo_horizontal.png"/>
+</a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+<li class="nav-link doc-head"><a href="//discourse.holoviz.org">Discourse</a></li>
+<li class="nav-link doc-head"><a href="//twitter.com/Panel_org">Twitter</a></li>
+<li class="nav-link doc-head"><a href="//github.com/pyviz/panel">Github</a></li>
+<li class="nav-link">
+<div style="display:inline-block;vertical-align: middle;">
+<div class="search-bar">
+<form action="../search.html" method="get" role="search">
+<input name="q" placeholder="Search" type="search"/>
+<button type="submit">
+<img alt="Search Icon" src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png"/>
+</button>
+</form>
+</div>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="second-nav">
+<nav>
+<ul class="navigation-menu show">
+<li class="nav-link doc-head"><a href="../getting_started/index.html">Getting started</a></li>
+<li class="nav-link doc-head"><a href="../user_guide/index.html">User Guide</a></li>
+<li class="nav-link doc-head"><a href="../gallery/index.html">Gallery</a></li>
+<li class="nav-link doc-head"><a href="../reference/index.html">Reference Gallery</a></li>
+<li class="nav-link doc-head"><a href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="nav-link doc-head"><a href="../releases.html">Releases</a></li>
+<li class="nav-link doc-head"><a href="index.html">API</a></li>
+<li class="nav-link doc-head"><a href="../FAQ.html">FAQ</a></li>
+<li class="nav-link doc-head"><a href="../about.html">About</a></li>
+</ul>
+</nav>
+</div>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Comparisons.html">Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roadmap.html">Road Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/pyviz/panel">Github source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<div class="section" id="viewable-module">
+<h1>viewable Module<a class="headerlink" href="#viewable-module" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">viewable</span></code> Module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-panel.viewable"></span><p>Defines the Viewable and Reactive baseclasses allow all panel objects
+to display themselves, communicate with a Python process and react in
+response to changes to parameters and the underlying bokeh models.</p>
+<dl class="py class">
+<dt id="panel.viewable.Layoutable">
+<em class="property">class </em><code class="sig-prename descclassname">panel.viewable.</code><code class="sig-name descname">Layoutable</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Layoutable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Layoutable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">param.parameterized.Parameterized</span></code></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">align</span></code> = param.ObjectSelector(default=’start’, objects=[‘start’, ‘end’, ‘center’])</dt><dd><p>Whether the object should be aligned with the start, end or
+        center of its container</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code> = param.Parameter()</dt><dd><p>Describes the proportional relationship between component’s
+        width and height.  This works if any of component’s dimensions
+        are flexible in size. If set to a number, <code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">/</span> <span class="pre">height</span> <span class="pre">=</span>
+        <span class="pre">aspect_ratio</span></code> relationship will be maintained.  Otherwise, if
+        set to <code class="docutils literal notranslate"><span class="pre">"auto"</span></code>, component’s preferred width and height will
+        be used to determine the aspect (if not set, no aspect will be
+        preserved).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">background</span></code> = param.Parameter()</dt><dd><p>Background color of the component.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">css_classes</span></code> = param.List(bounds=(0, None))</dt><dd><p>CSS classes to apply to the layout.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">width</span></code> = param.Integer(bounds=(0, None), inclusive_bounds=(True, True))</dt><dd><p>The width of the component (in pixels). This can be either
+        fixed or preferred width, depending on width sizing policy.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">height</span></code> = param.Integer(bounds=(0, None), inclusive_bounds=(True, True))</dt><dd><p>The height of the component (in pixels).  This can be either
+        fixed or preferred height, depending on height sizing policy.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">min_width</span></code> = param.Integer(bounds=(0, None), inclusive_bounds=(True, True))</dt><dd><p>Minimal width of the component (in pixels) if width is adjustable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">min_height</span></code> = param.Integer(bounds=(0, None), inclusive_bounds=(True, True))</dt><dd><p>Minimal height of the component (in pixels) if height is adjustable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_width</span></code> = param.Integer(bounds=(0, None), inclusive_bounds=(True, True))</dt><dd><p>Minimal width of the component (in pixels) if width is adjustable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_height</span></code> = param.Integer(bounds=(0, None), inclusive_bounds=(True, True))</dt><dd><p>Minimal height of the component (in pixels) if height is adjustable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">margin</span></code> = param.Parameter(default=5)</dt><dd><p>Allows to create additional space around the component. May
+        be specified as a two-tuple of the form (vertical, horizontal)
+        or a four-tuple (top, right, bottom, left).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">width_policy</span></code> = param.ObjectSelector(default=’auto’, objects=[‘auto’, ‘fixed’, ‘fit’, ‘min’, ‘max’])</dt><dd><p>Describes how the component should maintain its width.
+
+        <code class="docutils literal notranslate"><span class="pre">"auto"</span></code>
+            Use component’s preferred sizing policy.
+
+        <code class="docutils literal notranslate"><span class="pre">"fixed"</span></code>
+            Use exactly <code class="docutils literal notranslate"><span class="pre">width</span></code> pixels. Component will overflow if
+            it can’t fit in the available horizontal space.
+
+        <code class="docutils literal notranslate"><span class="pre">"fit"</span></code>
+            Use component’s preferred width (if set) and allow it to
+            fit into the available horizontal space within the minimum
+            and maximum width bounds (if set). Component’s width
+            neither will be aggressively minimized nor maximized.
+
+        <code class="docutils literal notranslate"><span class="pre">"min"</span></code>
+            Use as little horizontal space as possible, not less than
+            the minimum width (if set).  The starting point is the
+            preferred width (if set). The width of the component may
+            shrink or grow depending on the parent layout, aspect
+            management and other factors.
+
+        <code class="docutils literal notranslate"><span class="pre">"max"</span></code>
+            Use as much horizontal space as possible, not more than
+            the maximum width (if set).  The starting point is the
+            preferred width (if set). The width of the component may
+            shrink or grow depending on the parent layout, aspect
+            management and other factors.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">height_policy</span></code> = param.ObjectSelector(default=’auto’, objects=[‘auto’, ‘fixed’, ‘fit’, ‘min’, ‘max’])</dt><dd><p>Describes how the component should maintain its height.
+
+        <code class="docutils literal notranslate"><span class="pre">"auto"</span></code>
+            Use component’s preferred sizing policy.
+
+        <code class="docutils literal notranslate"><span class="pre">"fixed"</span></code>
+            Use exactly <code class="docutils literal notranslate"><span class="pre">height</span></code> pixels. Component will overflow if
+            it can’t fit in the available vertical space.
+
+        <code class="docutils literal notranslate"><span class="pre">"fit"</span></code>
+            Use component’s preferred height (if set) and allow to fit
+            into the available vertical space within the minimum and
+            maximum height bounds (if set). Component’s height neither
+            will be aggressively minimized nor maximized.
+
+        <code class="docutils literal notranslate"><span class="pre">"min"</span></code>
+            Use as little vertical space as possible, not less than
+            the minimum height (if set).  The starting point is the
+            preferred height (if set). The height of the component may
+            shrink or grow depending on the parent layout, aspect
+            management and other factors.
+
+        <code class="docutils literal notranslate"><span class="pre">"max"</span></code>
+            Use as much vertical space as possible, not more than the
+            maximum height (if set).  The starting point is the
+            preferred height (if set). The height of the component may
+            shrink or grow depending on the parent layout, aspect
+            management and other factors.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sizing_mode</span></code> = param.ObjectSelector(objects=[‘fixed’, ‘stretch_width’, ‘stretch_height’, ‘stretch_both’, ‘scale_width’, ‘scale_height’, ‘scale_both’, None])</dt><dd><p>How the component should size itself.
+
+        This is a high-level setting for maintaining width and height
+        of the component. To gain more fine grained control over
+        sizing, use <code class="docutils literal notranslate"><span class="pre">width_policy</span></code>, <code class="docutils literal notranslate"><span class="pre">height_policy</span></code> and
+        <code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code> instead (those take precedence over
+        <code class="docutils literal notranslate"><span class="pre">sizing_mode</span></code>).
+
+        <code class="docutils literal notranslate"><span class="pre">"fixed"</span></code>
+            Component is not responsive. It will retain its original
+            width and height regardless of any subsequent browser
+            window resize events.
+
+        <code class="docutils literal notranslate"><span class="pre">"stretch_width"</span></code>
+            Component will responsively resize to stretch to the
+            available width, without maintaining any aspect ratio. The
+            height of the component depends on the type of the
+            component and may be fixed or fit to component’s contents.
+
+        <code class="docutils literal notranslate"><span class="pre">"stretch_height"</span></code>
+            Component will responsively resize to stretch to the
+            available height, without maintaining any aspect
+            ratio. The width of the component depends on the type of
+            the component and may be fixed or fit to component’s
+            contents.
+
+        <code class="docutils literal notranslate"><span class="pre">"stretch_both"</span></code>
+            Component is completely responsive, independently in width
+            and height, and will occupy all the available horizontal
+            and vertical space, even if this changes the aspect ratio
+            of the component.
+
+        <code class="docutils literal notranslate"><span class="pre">"scale_width"</span></code>
+            Component will responsively resize to stretch to the
+            available width, while maintaining the original or
+            provided aspect ratio.
+
+        <code class="docutils literal notranslate"><span class="pre">"scale_height"</span></code>
+            Component will responsively resize to stretch to the
+            available height, while maintaining the original or
+            provided aspect ratio.
+
+        <code class="docutils literal notranslate"><span class="pre">"scale_both"</span></code>
+            Component will responsively resize to both the available
+            width and height, while maintaining the original or
+            provided aspect ratio.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="panel.viewable.LinkWatcher">
+<code class="sig-prename descclassname">panel.viewable.</code><code class="sig-name descname">LinkWatcher</code><a class="headerlink" href="#panel.viewable.LinkWatcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.Watcher</span></code></p>
+</dd></dl>
+<dl class="py class">
+<dt id="panel.viewable.Reactive">
+<em class="property">class </em><code class="sig-prename descclassname">panel.viewable.</code><code class="sig-name descname">Reactive</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Reactive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Reactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#panel.viewable.Viewable" title="panel.viewable.Viewable"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.Viewable</span></code></a></p>
+<p>Reactive is a Viewable object that also supports syncing between
+the objects parameters and the underlying bokeh model either via
+the defined pyviz_comms.Comm type or when using bokeh server.</p>
+<p>In order to bi-directionally link parameters with bokeh model
+instances the _link_params and _link_props methods define
+callbacks triggered when either the parameter or bokeh property
+values change. Since there may not be a 1-to-1 mapping between
+parameter and the model property the _process_property_change and
+_process_param_change may be overridden to apply any necessary
+transformations.</p>
+<p>Parameters inherited from:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#panel.viewable.Layoutable" title="panel.viewable.Layoutable"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.Layoutable</span></code></a>: align, aspect_ratio, background, css_classes, width, height, min_width, min_height, max_width, max_height, margin, width_policy, height_policy, sizing_mode</p>
+</div></blockquote>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.add_periodic_callback">
+<code class="sig-name descname">add_periodic_callback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">callback</span></em>, <em class="sig-param"><span class="n">period</span><span class="o">=</span><span class="default_value">500</span></em>, <em class="sig-param"><span class="n">count</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Reactive.add_periodic_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Reactive.add_periodic_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Schedules a periodic callback to be run at an interval set by
+the period. Returns a PeriodicCallback object with the option
+to stop and start the callback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>callable</em>) – Callable function to be executed at periodic interval.</p></li>
+<li><p><strong>period</strong> (<em>int</em>) – Interval in milliseconds at which callback will be executed.</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – Maximum number of times callback will be invoked.</p></li>
+<li><p><strong>timeout</strong> (<em>int</em>) – Timeout in seconds when the callback should be stopped.</p></li>
+<li><p><strong>start</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to start callback immediately.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Return a PeriodicCallback object with start and stop methods.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.app">
+<code class="sig-name descname">app</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">notebook_url</span><span class="o">=</span><span class="default_value">'localhost:8888'</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a bokeh server app inline in the notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notebook_url</strong> (<em>str</em>) – URL to the notebook server</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.clone">
+<code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a copy of the object sharing the same parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>Keyword arguments override the parameters on the clone.</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Cloned Viewable object</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.controls">
+<code class="sig-name descname">controls</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parameters</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">jslink</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Reactive.controls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Reactive.controls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a set of widgets which allow manipulating the parameters
+on this instance. By default all parameters which support
+linking are exposed, but an explicit list of parameters can
+be provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – An explicit list of parameters to return controls for.</p></li>
+<li><p><strong>jslink</strong> (<em>bool</em>) – Whether to use jslinks instead of Python based links.
+This does not allow using all types of parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A layout of the controls</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.embed">
+<code class="sig-name descname">embed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_states</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">max_opts</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">save_path</span><span class="o">=</span><span class="default_value">'./'</span></em>, <em class="sig-param"><span class="n">load_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">progress</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.embed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a static version of a panel in a notebook by evaluating
+the set of states defined by the widgets in the model. Note
+this will only work well for simple apps with a relatively
+small state space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+<li><p><strong>progress</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to report progress</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.get_root">
+<code class="sig-name descname">get_root</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">comm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.get_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the root model and applies pre-processing hooks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>bokeh.Document</em>) – Bokeh document the bokeh model will be attached to.</p></li>
+<li><p><strong>comm</strong> (<em>pyviz_comms.Comm</em>) – Optional pyviz_comms when working in notebook</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Returns the bokeh model corresponding to this panel object</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.jscallback">
+<code class="sig-name descname">jscallback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">callbacks</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Reactive.jscallback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Reactive.jscallback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows defining a JS callback to be triggered when a property
+changes on the source object. The keyword arguments define the
+properties that trigger a callback and the JS code that gets
+executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>dict</em>) – A mapping of objects to make available to the JS callback</p></li>
+<li><p><strong>**callbacks</strong> (<em>dict</em>) – A mapping between properties on the source model and the code
+to execute when that property changes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>callback</strong> – The Callback which can be used to disable the callback.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="panel.links.html#panel.links.Callback" title="panel.links.Callback">Callback</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.jslink">
+<code class="sig-name descname">jslink</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em>, <em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">args</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">bidirectional</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">links</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Reactive.jslink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Reactive.jslink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Links properties on the source object to those on the target
+object in JS code. Supports two modes, either specify a
+mapping between the source and target model properties as
+keywords or provide a dictionary of JS code snippets which
+maps from the source parameter to a JS code snippet which is
+executed when the property changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>HoloViews object</em><em> or </em><em>bokeh Model</em><em> or </em><em>panel Viewable</em>) – The target to link the value to.</p></li>
+<li><p><strong>code</strong> (<em>dict</em>) – Custom code which will be executed when the widget value
+changes.</p></li>
+<li><p><strong>bidirectional</strong> (<em>boolean</em>) – Whether to link source and target bi-directionally</p></li>
+<li><p><strong>**links</strong> (<em>dict</em>) – A mapping between properties on the source model and the
+target model property to link it to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>link</strong> – The GenericLink which can be used unlink the widget and
+the target model.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>GenericLink</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.link">
+<code class="sig-name descname">link</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em>, <em class="sig-param"><span class="n">callbacks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">links</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Reactive.link"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Reactive.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Links the parameters on this object to attributes on another
+object in Python. Supports two modes, either specify a mapping
+between the source and target object parameters as keywords or
+provide a dictionary of callbacks which maps from the source
+parameter to a callback which is triggered when the parameter
+changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>object</em>) – The target object of the link.</p></li>
+<li><p><strong>callbacks</strong> (<em>dict</em>) – Maps from a parameter in the source object to a callback.</p></li>
+<li><p><strong>**links</strong> (<em>dict</em>) – Maps between parameters on this object to the parameters
+on the supplied object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.pprint">
+<code class="sig-name descname">pprint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.pprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a compositional repr of the class.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resources</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">template</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">template_variables</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">embed</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">max_states</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">max_opts</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">embed_json</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">json_prefix</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">save_path</span><span class="o">=</span><span class="default_value">'./'</span></em>, <em class="sig-param"><span class="n">load_path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves Panel objects to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em><em> or </em><em>file-like object</em>) – Filename to save the plot to</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – Optional title for the plot</p></li>
+<li><p><strong>resources</strong> (<em>bokeh resources</em>) – One of the valid bokeh.resources (e.g. CDN or INLINE)</p></li>
+<li><p><strong>template</strong> – passed to underlying io.save</p></li>
+<li><p><strong>template_variables</strong> – passed to underlying io.save</p></li>
+<li><p><strong>embed</strong> (<em>bool</em>) – Whether the state space should be embedded in the saved file.</p></li>
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>embed_json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>json_prefix</strong> (<em>str</em><em> (</em><em>default=''</em><em>)</em>) – Prefix for the auto-generated json directory</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.select">
+<code class="sig-name descname">select</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates over the Viewable and any potential children in the
+applying the Selector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>selector</strong> (<em>type</em><em> or </em><em>callable</em><em> or </em><em>None</em>) – The selector allows selecting a subset of Viewables by
+declaring a type or callable function to filter by.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>viewables</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(<a class="reference internal" href="#panel.viewable.Viewable" title="panel.viewable.Viewable">Viewable</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.servable">
+<code class="sig-name descname">servable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.servable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serves the object if in a <cite>panel serve</cite> context and returns
+the Panel object to allow it to display itself in a notebook
+context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>str</em>) – A string title to give the Document (if served as an app)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>The Panel object itself</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.server_doc">
+<code class="sig-name descname">server_doc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.server_doc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a serveable bokeh Document with the panel attached</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>bokeh.Document</em><em> (</em><em>optional</em><em>)</em>) – The bokeh Document to attach the panel to as a root,
+defaults to bokeh.io.curdoc()</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>doc</strong> – The bokeh document the panel was attached to</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.Document</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Reactive.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">websocket_origin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">threaded</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">open</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Reactive.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a Bokeh server and displays the Viewable in a new tab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+<li><p><strong>websocket_origin</strong> (<em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>) </em><em>(</em><em>optional</em><em>)</em>) – A list of hosts that can connect to the websocket.
+This is typically required when embedding a server app in
+an external web site.
+If None, “localhost” is used.</p></li>
+<li><p><strong>threaded</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to launch the Server on a separate thread, allowing
+interactive use.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document (if served as an app)</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to print the address and port</p></li>
+<li><p><strong>open</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to open the server in a new browser tab</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>server</strong> – Returns the Bokeh server instance or the thread the server
+was launched on (if threaded=True)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.server.Server or threading.Thread</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="panel.viewable.Viewable">
+<em class="property">class </em><code class="sig-prename descclassname">panel.viewable.</code><code class="sig-name descname">Viewable</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#panel.viewable.Layoutable" title="panel.viewable.Layoutable"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.Layoutable</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.ServableMixin</span></code></p>
+<p>Viewable is the baseclass all objects in the panel library are
+built on. It defines the interface for declaring any object that
+displays itself by transforming the object(s) being wrapped into
+models that can be served using bokeh’s layout engine. The class
+also defines various methods that allow Viewable objects to be
+displayed in the notebook and on bokeh server.</p>
+<p>Parameters inherited from:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#panel.viewable.Layoutable" title="panel.viewable.Layoutable"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.Layoutable</span></code></a>: align, aspect_ratio, background, css_classes, width, height, min_width, min_height, max_width, max_height, margin, width_policy, height_policy, sizing_mode</p>
+</div></blockquote>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.app">
+<code class="sig-name descname">app</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">notebook_url</span><span class="o">=</span><span class="default_value">'localhost:8888'</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a bokeh server app inline in the notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notebook_url</strong> (<em>str</em>) – URL to the notebook server</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.clone">
+<code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a copy of the object sharing the same parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>Keyword arguments override the parameters on the clone.</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Cloned Viewable object</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.embed">
+<code class="sig-name descname">embed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_states</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">max_opts</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">save_path</span><span class="o">=</span><span class="default_value">'./'</span></em>, <em class="sig-param"><span class="n">load_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">progress</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.embed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.embed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a static version of a panel in a notebook by evaluating
+the set of states defined by the widgets in the model. Note
+this will only work well for simple apps with a relatively
+small state space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+<li><p><strong>progress</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to report progress</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.get_root">
+<code class="sig-name descname">get_root</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">comm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.get_root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.get_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the root model and applies pre-processing hooks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>bokeh.Document</em>) – Bokeh document the bokeh model will be attached to.</p></li>
+<li><p><strong>comm</strong> (<em>pyviz_comms.Comm</em>) – Optional pyviz_comms when working in notebook</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Returns the bokeh model corresponding to this panel object</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.pprint">
+<code class="sig-name descname">pprint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.pprint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.pprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a compositional repr of the class.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resources</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">template</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">template_variables</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">embed</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">max_states</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">max_opts</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">embed_json</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">json_prefix</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">save_path</span><span class="o">=</span><span class="default_value">'./'</span></em>, <em class="sig-param"><span class="n">load_path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves Panel objects to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em><em> or </em><em>file-like object</em>) – Filename to save the plot to</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – Optional title for the plot</p></li>
+<li><p><strong>resources</strong> (<em>bokeh resources</em>) – One of the valid bokeh.resources (e.g. CDN or INLINE)</p></li>
+<li><p><strong>template</strong> – passed to underlying io.save</p></li>
+<li><p><strong>template_variables</strong> – passed to underlying io.save</p></li>
+<li><p><strong>embed</strong> (<em>bool</em>) – Whether the state space should be embedded in the saved file.</p></li>
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>embed_json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>json_prefix</strong> (<em>str</em><em> (</em><em>default=''</em><em>)</em>) – Prefix for the auto-generated json directory</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.select">
+<code class="sig-name descname">select</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.select"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates over the Viewable and any potential children in the
+applying the Selector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>selector</strong> (<em>type</em><em> or </em><em>callable</em><em> or </em><em>None</em>) – The selector allows selecting a subset of Viewables by
+declaring a type or callable function to filter by.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>viewables</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(<a class="reference internal" href="#panel.viewable.Viewable" title="panel.viewable.Viewable">Viewable</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.servable">
+<code class="sig-name descname">servable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Viewable.servable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serves the object if in a <cite>panel serve</cite> context and returns
+the Panel object to allow it to display itself in a notebook
+context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>str</em>) – A string title to give the Document (if served as an app)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>The Panel object itself</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.server_doc">
+<code class="sig-name descname">server_doc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/viewable.html#Viewable.server_doc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#panel.viewable.Viewable.server_doc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a serveable bokeh Document with the panel attached</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>bokeh.Document</em><em> (</em><em>optional</em><em>)</em>) – The bokeh Document to attach the panel to as a root,
+defaults to bokeh.io.curdoc()</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>doc</strong> – The bokeh document the panel was attached to</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.Document</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="panel.viewable.Viewable.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">websocket_origin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">threaded</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">open</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.viewable.Viewable.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a Bokeh server and displays the Viewable in a new tab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+<li><p><strong>websocket_origin</strong> (<em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>) </em><em>(</em><em>optional</em><em>)</em>) – A list of hosts that can connect to the websocket.
+This is typically required when embedding a server app in
+an external web site.
+If None, “localhost” is used.</p></li>
+<li><p><strong>threaded</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to launch the Server on a separate thread, allowing
+interactive use.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document (if served as an app)</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to print the address and port</p></li>
+<li><p><strong>open</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to open the server in a new browser tab</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>server</strong> – Returns the Bokeh server instance or the thread the server
+was launched on (if threaded=True)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.server.Server or threading.Thread</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-154795830-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154795830-2');
+</script>
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

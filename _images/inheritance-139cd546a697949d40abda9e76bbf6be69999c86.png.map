@@ -1,0 +1,11 @@
+<map id="inheritancec22e6b71b2" name="inheritancec22e6b71b2">
+<area shape="rect" id="node1" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="204,34,328,50"/>
+<area shape="rect" id="node4" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="364,19,481,35"/>
+<area shape="rect" id="node2" title="params(name=String)" alt="" coords="3,34,168,50"/>
+<area shape="rect" id="node3" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="511,19,625,35"/>
+<area shape="rect" id="node6" href="#panel.widgets.base.Widget" target="_top" title="Widgets allow syncing changes in bokeh widget models with the" alt="" coords="655,19,780,35"/>
+<area shape="rect" id="node8" href="#panel.widgets.player.PlayerBase" target="_top" title="panel.widgets.player.PlayerBase" alt="" coords="810,34,958,50"/>
+<area shape="rect" id="node9" href="#panel.widgets.select.SelectBase" target="_top" title="panel.widgets.select.SelectBase" alt="" coords="811,3,957,19"/>
+<area shape="rect" id="node7" href="#panel.widgets.player.DiscretePlayer" target="_top" title="The DiscretePlayer provides controls to iterate through a list of" alt="" coords="988,3,1149,19"/>
+<area shape="rect" id="node10" href="#panel.widgets.player.Player" target="_top" title="The Player provides controls to play and skip through a number of" alt="" coords="1005,34,1132,50"/>
+</map>

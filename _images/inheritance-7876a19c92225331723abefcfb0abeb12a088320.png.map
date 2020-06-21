@@ -1,0 +1,6 @@
+<map id="inheritancedcf9264c51" name="inheritancedcf9264c51">
+<area shape="rect" id="node1" href="#panel.io.server.ProxyFallbackHandler" target="_top" title="A `RequestHandler` that wraps another HTTP server callback and" alt="" coords="264,55,527,80"/>
+<area shape="rect" id="node2" title="Base class for HTTP request handlers." alt="" coords="5,55,216,80"/>
+<area shape="rect" id="node3" href="#panel.io.server.StoppableThread" target="_top" title="Thread class with a stop() method." alt="" coords="279,5,511,31"/>
+<area shape="rect" id="node4" title="A class that represents a thread of control." alt="" coords="44,5,177,31"/>
+</map>

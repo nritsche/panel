@@ -1,0 +1,13 @@
+<map id="inheritance86031f71be" name="inheritance86031f71be">
+<area shape="rect" id="node1" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="581,45,690,59"/>
+<area shape="rect" id="node5" href="#panel.pane.markup.DivPaneBase" target="_top" title="Baseclass for Panes which render HTML inside a Bokeh Div." alt="" coords="717,45,850,59"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="453,45,554,59"/>
+<area shape="rect" id="node3" href="#panel.pane.markup.DataFrame" target="_top" title="DataFrame renders pandas, dask and streamz DataFrame types using" alt="" coords="1025,3,1149,17"/>
+<area shape="rect" id="node4" href="#panel.pane.markup.HTML" target="_top" title="HTML panes wrap HTML text in a Panel HTML model. The" alt="" coords="885,3,990,17"/>
+<area shape="rect" id="node6" href="#panel.pane.markup.JSON" target="_top" title="panel.pane.markup.JSON" alt="" coords="886,30,988,45"/>
+<area shape="rect" id="node7" href="#panel.pane.markup.Markdown" target="_top" title="A Markdown pane renders the markdown markup language to HTML and" alt="" coords="876,58,998,72"/>
+<area shape="rect" id="node8" href="#panel.pane.markup.Str" target="_top" title="A Str pane renders any object for which `str()` can be called," alt="" coords="890,85,985,100"/>
+<area shape="rect" id="node9" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="181,30,291,45"/>
+<area shape="rect" id="node11" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="323,45,427,59"/>
+<area shape="rect" id="node10" title="params(name=String)" alt="" coords="3,30,149,45"/>
+</map>

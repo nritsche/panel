@@ -1,0 +1,8 @@
+<map id="inheritance0c1558e0ff" name="inheritance0c1558e0ff">
+<area shape="rect" id="node1" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="808,24,960,43"/>
+<area shape="rect" id="node3" href="#panel.pane.deckgl.DeckGL" target="_top" title="DeckGL panes allow rendering Deck.Gl/ PyDeck plots in Panel." alt="" coords="997,24,1148,43"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="630,24,771,43"/>
+<area shape="rect" id="node4" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="252,4,404,24"/>
+<area shape="rect" id="node6" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="449,24,593,43"/>
+<area shape="rect" id="node5" title="params(name=String)" alt="" coords="4,4,207,24"/>
+</map>

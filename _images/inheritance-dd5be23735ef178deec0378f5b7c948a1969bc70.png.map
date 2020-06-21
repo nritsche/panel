@@ -1,0 +1,8 @@
+<map id="inheritanceec36324b92" name="inheritanceec36324b92">
+<area shape="rect" id="node1" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="823,24,978,44"/>
+<area shape="rect" id="node3" href="#panel.pane.vega.Vega" target="_top" title="Vega panes allow rendering Vega plots and traces." alt="" coords="1016,24,1148,44"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="642,24,786,44"/>
+<area shape="rect" id="node4" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="256,4,412,24"/>
+<area shape="rect" id="node6" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="458,24,604,44"/>
+<area shape="rect" id="node5" title="params(name=String)" alt="" coords="4,4,211,24"/>
+</map>

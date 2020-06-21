@@ -1,0 +1,8 @@
+<map id="inheritancea9bdc408d5" name="inheritancea9bdc408d5">
+<area shape="rect" id="node1" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="245,41,394,60"/>
+<area shape="rect" id="node4" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="438,23,578,42"/>
+<area shape="rect" id="node2" title="params(name=String)" alt="" coords="4,41,201,60"/>
+<area shape="rect" id="node3" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="614,23,751,42"/>
+<area shape="rect" id="node6" href="#panel.widgets.base.Widget" target="_top" title="Widgets allow syncing changes in bokeh widget models with the" alt="" coords="787,23,937,42"/>
+<area shape="rect" id="node7" href="#panel.widgets.tables.DataFrame" target="_top" title="panel.widgets.tables.DataFrame" alt="" coords="973,23,1148,42"/>
+</map>

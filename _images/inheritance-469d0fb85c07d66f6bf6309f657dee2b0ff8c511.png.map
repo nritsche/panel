@@ -1,0 +1,8 @@
+<map id="inheritance9a8e7135fe" name="inheritance9a8e7135fe">
+<area shape="rect" id="node1" href="#panel.pane.base.PaneBase" target="_top" title="PaneBase is the abstract baseclass for all atomic displayable units" alt="" coords="819,24,973,44"/>
+<area shape="rect" id="node3" href="#panel.pane.plotly.Plotly" target="_top" title="Plotly panes allow rendering plotly Figures and traces." alt="" coords="1011,24,1148,44"/>
+<area shape="rect" id="node2" href="panel.viewable.html#panel.viewable.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="639,24,781,44"/>
+<area shape="rect" id="node4" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="panel.viewable.Layoutable" alt="" coords="255,4,410,24"/>
+<area shape="rect" id="node6" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all objects in the panel library are" alt="" coords="456,24,601,44"/>
+<area shape="rect" id="node5" title="params(name=String)" alt="" coords="4,4,209,24"/>
+</map>
